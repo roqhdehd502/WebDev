@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HelloJSP!</title>
 </head>
 <body>
-HelloWorld!
+HelloWorld! I'm JSP!
 </body>
 </html>
