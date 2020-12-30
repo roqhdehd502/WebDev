@@ -16,13 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/HS")
 public class HobbyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public HobbyServlet() {
-        super();
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public HobbyServlet() {
+		super();
+	}
 
 	/**
 	 * @see Servlet#init(ServletConfig)
@@ -50,16 +50,16 @@ public class HobbyServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost 입니다.");
-		
+
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String[] hb = request.getParameterValues("hb");
 		String subject = request.getParameter("subject");
 		String protocol = request.getParameter("protocol");
-		
+
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer = response.getWriter();
-		
+
 		writer.println("<html><head></head><body>");
 		writer.println("<h1>아이디 : " + id + "</h1>");
 		writer.println("<h1>비밀번호 : " + pw + "</h1>");
