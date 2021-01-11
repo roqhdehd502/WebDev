@@ -19,7 +19,7 @@
 			<option>(7839)CLARK
 			<option>(0)KING
 		</select><br>
-		입사일<input type="date" name="hiredate"><br>
+		입사일<input type="date" name="rDate"><br>
 		급여<input type="text" name="sal"><br>
 		커미션<input type="text" name="comm"><br>
 		부서 <select>

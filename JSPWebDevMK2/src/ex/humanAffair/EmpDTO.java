@@ -3,19 +3,20 @@ package ex.humanAffair;
 import java.sql.Timestamp;
 
 public class EmpDTO {
-	private int empno; // 사원번호
-	private String ename; // 사원이름
-	private String job; // 사원직급
-	private int mgr; // 상사
-	private Timestamp rDate; // 입사일
-	private int sal; // 급여
-	private	int comm; // 커미션(성과급)
-	private int deptno; // 부서번호
-	private String dname; // 부서이름
-	private String loc; // 부서위치
+	private int empno; // 사원번호(EMP)
+	private String ename; // 사원이름(EMP)
+	private String job; // 사원직급(EMP)
+	private int mgr; // 상사(EMP)
+	private Timestamp rDate; // 입사일(EMP)
+	private int sal; // 급여(EMP)
+	private	int comm; // 커미션(EMP)
+	private int deptno; // 부서번호(EMP, DEPT)
+	private String dname; // 부서이름(DEPT)
+	private String loc; // 부서위치(DEPT)
 	
 	public EmpDTO() { }
 	
+	/*
 	public EmpDTO(int empno, String ename, String job,
 			int mgr, Timestamp rDate, int sal,
 			int comm, int deptno, String dname, String loc) {
@@ -30,6 +31,7 @@ public class EmpDTO {
 		this.dname = dname;
 		this.loc = loc;
 	}
+	*/
 
 	public int getEmpno() {
 		return empno;
