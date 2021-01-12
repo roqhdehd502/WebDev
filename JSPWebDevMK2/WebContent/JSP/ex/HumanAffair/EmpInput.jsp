@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<jsp:useBean id="dao" class="ex.humanAffair.EmpDAO"></jsp:useBean>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +16,10 @@
 		사원번호<input type="text" name="empno"><br>
 		사원이름<input type="text" name="ename"><br>
 		직급<input type="text" name="job"><br>
-		상사<select>
-			<option>(7839)JONES
-			<option>(7839)BLAKE
-			<option>(7839)CLARK
-			<option>(0)KING
+		상사<select name="job">
+			<c:forEach var="man" items="${dao.managerSelect()}">
+				<option value="${man.empno}"> (${nam.empno})(${nam.ename})</option>
+			</c:forEach>
 		</select><br>
 		입사일<input type="date" name="rDate"><br>
 		급여<input type="text" name="sal"><br>

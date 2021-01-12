@@ -1,6 +1,7 @@
 package ex.humanAffair;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class EmpDAO {
 	private Connection connection; // Connection
@@ -144,4 +145,14 @@ public class EmpDAO {
 		
 		return connection;
 	}
+	
+	/*
+	public ArrayList<String> getManager() {
+		ArrayList<EmpDTO> dtos = new ArrayList<EmpDTO>();
+		
+		Connection con = null;
+		Statement stmt = null;
+		
+	}
+	*/
 }

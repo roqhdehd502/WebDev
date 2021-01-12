@@ -23,6 +23,7 @@
 	<title>직원 목록</title>
 </head>
 <body>
+<!--  
 	<h1>EMP 테이블 직원 목록</h1>
 	<table>
 		<tr>
@@ -41,6 +42,7 @@
 		</tr>
 		
 		<%
+		/*
 		while() {
 			out.println("<tr>");
 			out.println("<td>" + empno + "</td>");
@@ -56,7 +58,9 @@
 			out.println("<td><a href=\"#\">수정</td>");
 			out.println("</tr>");
 		}
+		*/
 		%>
 	</table>
+-->	
 </body>
 </html>
