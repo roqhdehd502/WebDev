@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.bit.ex.command.BCommand;
+import edu.bit.ex.command.BContentCommand;
+import edu.bit.ex.command.BDeleteCommand;
 import edu.bit.ex.command.BListCommand;
+import edu.bit.ex.command.BWriteCommand;
 
 /**
  * Servlet implementation class BFrontController
@@ -68,12 +71,23 @@ public class BFrontController extends HttpServlet {
 		
 		// 해당 경로가 본 서블릿 매핑 경로와 일치할경우
 		if (com.equals("/list.do")) { 
-			// 커맨드 리스트 객체에 담는다.
-			command = new BListCommand();
-			// 요청 및 응답 객체를 담아 커맨드 리스트를 실행한다.
+			command = new BListCommand(); // 커맨드 리스트 객체에 담는다.			
+			command.execute(request, response); // 요청 및 응답 객체를 담아 커맨드 리스트를 실행한다.		
+			viewPage = "list.jsp"; // Controller -> View로 응답한다.
+		} else if(com.equals("/content_view.do")) {
+			command = new BContentCommand();
 			command.execute(request, response);
-			// Controller -> View로 응답한다.
-			viewPage = "list.jsp"; 
+			viewPage = "content_view.jsp"; // 글내용 페이지로 간다
+		} else if(com.equals("/write_view.do")) {
+			viewPage = "write_view.jsp"; // 글쓰기 페이지로 바로 간다
+		} else if(com.equals("/write.do")) {
+			command = new BWriteCommand();
+			command.execute(request, response);
+			viewPage = "list.do"; // 글쓰기가 완료되면 list페이지로 간다
+		} else if(com.equals("/delete.do")) {
+			command = new BDeleteCommand();
+			command.execute(request, response);
+			viewPage = "list.do"; // 삭제가 완료되면 list페이지로 이동한다.
 		}
 		
 		// 디스패쳐 객체로 viewPage를 담아 요청한다.
