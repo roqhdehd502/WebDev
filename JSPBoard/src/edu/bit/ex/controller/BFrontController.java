@@ -13,6 +13,7 @@ import edu.bit.ex.command.BCommand;
 import edu.bit.ex.command.BContentCommand;
 import edu.bit.ex.command.BDeleteCommand;
 import edu.bit.ex.command.BListCommand;
+import edu.bit.ex.command.BModifyCommand;
 import edu.bit.ex.command.BWriteCommand;
 
 /**
@@ -88,6 +89,10 @@ public class BFrontController extends HttpServlet {
 			command = new BDeleteCommand();
 			command.execute(request, response);
 			viewPage = "list.do"; // 삭제가 완료되면 list페이지로 이동한다.
+		} else if(com.equals("/modify.do")) {
+			command = new BModifyCommand();
+			command.execute(request, response);
+			viewPage = "list.do"; // 수정이 완료되면 list페이지로 이동한다.
 		}
 		
 		// 디스패쳐 객체로 viewPage를 담아 요청한다.

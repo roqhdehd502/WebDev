@@ -16,8 +16,8 @@ import edu.bit.ex.dto.BDto;
 public class BDao { 
 	private DataSource dataSource; // 커넥션 풀
 	
-	public BDao() { // 컨텍스트 내용을 생성자 함수에 구현
-
+	// 컨텍스트 내용을 생성자 함수에 구현
+	public BDao() { 
 		try {
 			// 톰캣에 있는 context.xml내 커넥션풀 구현문을 참조해서 가져온다
 			Context context = new InitialContext();
@@ -28,7 +28,8 @@ public class BDao {
 		}
 	}
 	
-	public ArrayList<BDto> list() { // 리스트로 게시글 DB Select하여 호출
+	// 리스트로 게시글 DB Select하여 호출
+	public ArrayList<BDto> list() { 
 		ArrayList<BDto> dtos = new ArrayList<BDto>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -72,8 +73,9 @@ public class BDao {
 		}
 		return dtos;
 	}
-
-	public BDto contentView(String bId) { // 게시글 내용을 Select
+	
+	// 게시글 내용을 Select
+	public BDto contentView(String bId) { 
 		BDto dtos = null;
 		
 		Connection connection = null;
@@ -184,6 +186,36 @@ public class BDao {
 				e2.printStackTrace();
 			}
 		}
-		
+	}
+	
+	// 게시글을 수정하여 UPDATE하기
+	public void modify(String bId, String bName, String bTitle, String bContent) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "UPDATE mvc_board "
+					+ "SET bName = ?, bTitle = ?, bContent = ? "
+					+ "WHERE bId = ?"; // 해당 게시글 정보를 UPDATE하기
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, bName);
+			preparedStatement.setString(2, bTitle);
+			preparedStatement.setString(3, bContent);
+			preparedStatement.setInt(4, Integer.parseInt(bId));
+			
+			int rn = preparedStatement.executeUpdate();
+			System.out.println("UPDATE 결과: " + rn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
 }
