@@ -4,7 +4,7 @@
 
 # 자바 교육기간
 
-2020.11.23 ~ 2020.12.23
+<a href = "https://github.com/roqhdehd502/WebDev/tree/main/JavaWebDev">2020.11.23 ~ 2020.12.23</a>
 
 # HTML 교육기간
 
