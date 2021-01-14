@@ -40,8 +40,8 @@ public class BDao {
 			connection = dataSource.getConnection();
 			
 			String query = "SELECT bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent "
-					+ "FROM mvc_board "
-					+ "ORDER BY bGroup DESC, bStep ASC"; // 게시글 정렬
+						 + "FROM mvc_board "
+						 + "ORDER BY bGroup DESC, bStep ASC"; // 게시글 정렬(답글이 달려도 원본글이 우선으로!)
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 
@@ -59,7 +59,6 @@ public class BDao {
 				BDto dto = new BDto(bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent);
 				dtos.add(dto);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -75,7 +74,9 @@ public class BDao {
 	}
 	
 	// 게시글 내용을 Select
-	public BDto contentView(String bId) { 
+	public BDto contentView(String bId) {
+		upHit(bId);
+		
 		BDto dtos = null;
 		
 		Connection connection = null;
@@ -83,14 +84,13 @@ public class BDao {
 		ResultSet resultSet = null;
 
 		try {
-			// 커넥션풀에 있는 커넥션 메소드 호출
 			connection = dataSource.getConnection();
 
 			String query = "SELECT * "
-					+ "FROM mvc_board "
-					+ "WHERE bId = ?"; // 해당 게시글 번호를 조회
+						 + "FROM mvc_board "
+						 + "WHERE bId = ?"; // 해당 게시글 번호를 조회
 			preparedStatement = connection.prepareStatement(query);
-			// ? Wild Card로 넘어온것을 순서대로 담는다.
+			// '?' Wild Card로 넘어온것을 순서대로 담는다.
 			// preparedStatment에 들어간 String 타입을 int로 형 변환
 			preparedStatement.setInt(1, Integer.parseInt(bId));
 			
@@ -109,8 +109,6 @@ public class BDao {
 	            
 	            dtos = new BDto(id, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent);
 	         }
-
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -133,22 +131,23 @@ public class BDao {
 		try {
 			connection = dataSource.getConnection();
 
-			String query = "insert into mvc_board (bId, bName,"
-					+ " bTitle, bContent,"
-					+ " bHit, bGroup,"
-					+ " bStep, bIndent) "
-					+ "values (mvc_board_seq.nextval, ?,"
-					+ " ?, ?,"
-					+ " 0, mvc_board_seq.currval,"
-					+ " 0, 0 )"; // 해당 게시글 정보를 Insert하기
+			String query = "INSERT INTO mvc_board (bId, bName,"
+							+ " bTitle, bContent,"
+							+ " bHit, bGroup,"
+							+ " bStep, bIndent) "
+						 + "VALUES (mvc_board_seq.nextval, ?,"
+							+ " ?, ?,"
+							+ " 0, mvc_board_seq.currval,"
+							+ " 0, 0 )"; // 해당 게시글 정보를 Insert하기
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, bName);
 			preparedStatement.setString(2, bTitle);
 			preparedStatement.setString(3, bContent);
 			
-			// 쿼리문에 의해 DB애 변화가 있을때 executeUpdate를 호출한다.
+			// 쿼리문에 의해 DB에 변화가 있을때 호출한다.
+			// executeUpdate는 DB가 갱신된 횟수를 카운트하여 해당 값을 리턴한다.
 			int rn = preparedStatement.executeUpdate();
-			System.out.println("INSERT 결과: " + rn);
+			System.out.println("write 반환 결과: " + rn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -170,12 +169,12 @@ public class BDao {
 			connection = dataSource.getConnection();
 
 			String query = "DELETE FROM mvc_board "
-					+ "WHERE bId = ?"; // 해당 게시글 정보를 DELETE하기
+						 + "WHERE bId = ?"; // 해당 게시글 정보를 DELETE하기
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, Integer.parseInt(bId));
 			
 			int rn = preparedStatement.executeUpdate();
-			System.out.println("DELETE 결과: " + rn);
+			System.out.println("delete 반환 결과: " + rn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -197,8 +196,8 @@ public class BDao {
 			connection = dataSource.getConnection();
 
 			String query = "UPDATE mvc_board "
-					+ "SET bName = ?, bTitle = ?, bContent = ? "
-					+ "WHERE bId = ?"; // 해당 게시글 정보를 UPDATE하기
+						 + "SET bName = ?, bTitle = ?, bContent = ? "
+						 + "WHERE bId = ?"; // 해당 게시글 정보를 UPDATE하기
 			preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, bName);
 			preparedStatement.setString(2, bTitle);
@@ -206,7 +205,146 @@ public class BDao {
 			preparedStatement.setInt(4, Integer.parseInt(bId));
 			
 			int rn = preparedStatement.executeUpdate();
-			System.out.println("UPDATE 결과: " + rn);
+			System.out.println("modify 반환 결과: " + rn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	// SELECT하여 답글 구현
+	public BDto reply_view(String bId) {
+		BDto dtos = null;
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "SELECT * "
+						 + "FROM mvc_board "
+						 + "WHERE bId = ?"; // 해당 답글을 조회
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(bId));		
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+	            int id = resultSet.getInt("bId");
+	            String bName = resultSet.getString("bName");
+	            String bTitle = resultSet.getString("bTitle");
+	            String bContent = resultSet.getString("bContent");
+	            Timestamp bDate = resultSet.getTimestamp("bDate");
+	            int bHit = resultSet.getInt("bHit");
+	            int bGroup = resultSet.getInt("bGroup");
+	            int bStep = resultSet.getInt("bStep");
+	            int bIndent = resultSet.getInt("bIndent");
+	            
+	            dtos = new BDto(id, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent);
+	         }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				//if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dtos;
+	}
+	
+	// INSERT하여 답변을 게시물에 추가한다.
+	public void reply(String bId, String bName, String bTitle,
+			String bContent, String bGroup, String bStep, String bIndent) {
+		replyShape(bGroup, bStep);
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "INSERT INTO mvc_board (bId, bName, bTitle,"
+								+ " bContent, bGroup, bStep, bIndent) "
+					     + "VALUES (mvc_board_seq.nextval, ?, ?,"
+					     		+ " ?, ?, ?, ?)"; // INSERT로 답변을 게시물에 추가한다.
+			preparedStatement = connection.prepareStatement(query);
+
+			preparedStatement.setString(1, bName);
+            preparedStatement.setString(2, bTitle);
+            preparedStatement.setString(3, bContent);
+            preparedStatement.setInt(4, Integer.parseInt(bGroup));
+            // 답변을 추가할 때마다 답변의 줄이 한칸씩 추가된다.
+            preparedStatement.setInt(5, Integer.parseInt(bStep) + 1);
+            preparedStatement.setInt(6, Integer.parseInt(bIndent) + 1);
+		
+            int rn = preparedStatement.executeUpdate();
+            System.out.println("reply 반환 결과: " + rn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	// 답변 형태 구현
+	private void replyShape(String strGroup, String strStep) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE mvc_board "
+						 + "SET bStep = bStep + 1 " // 답변줄을 하나 추가한다
+						 + "WHERE bGroup = ? " // 해당 게시글 그룹에 해당되어
+						 	+ "AND bStep > ?"; // 추가할 답변 수가 기존 답변줄의 수보다 더 적다는 조건하에
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(strGroup));
+			preparedStatement.setInt(2, Integer.parseInt(strStep));
+			
+			int rn = preparedStatement.executeUpdate();
+			System.out.println("replyShape 반환 결과: " + rn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	// 조회수 카운팅 구현
+	private void upHit(String bId) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE mvc_board "
+					     + "SET bHit = bHit + 1 "
+					     + "WHERE bId = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, bId);
+			
+			int rn = preparedStatement.executeUpdate();
+			System.out.println("upHit 반환 결과: " + rn);				
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

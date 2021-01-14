@@ -14,6 +14,8 @@ import edu.bit.ex.command.BContentCommand;
 import edu.bit.ex.command.BDeleteCommand;
 import edu.bit.ex.command.BListCommand;
 import edu.bit.ex.command.BModifyCommand;
+import edu.bit.ex.command.BReplyCommand;
+import edu.bit.ex.command.BReplyViewCommand;
 import edu.bit.ex.command.BWriteCommand;
 
 /**
@@ -51,7 +53,7 @@ public class BFrontController extends HttpServlet {
 	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("actionDo");
 		
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("UTF-8");
 		
 		String viewPage = null;
 		BCommand command = null;
@@ -68,13 +70,12 @@ public class BFrontController extends HttpServlet {
 		System.out.println(uri);
 	    System.out.println(conPath);
 	    System.out.println(com);
-
 		
 		// 해당 경로가 본 서블릿 매핑 경로와 일치할경우
 		if (com.equals("/list.do")) { 
-			command = new BListCommand(); // 커맨드 리스트 객체에 담는다.			
-			command.execute(request, response); // 요청 및 응답 객체를 담아 커맨드 리스트를 실행한다.		
-			viewPage = "list.jsp"; // Controller -> View로 응답한다.
+			command = new BListCommand(); // 커맨드 리스트 객체에 담는다	
+			command.execute(request, response); // 요청 및 응답 객체를 담아 커맨드 리스트를 실행한다	
+			viewPage = "list.jsp"; // Controller -> View로 응답한다
 		} else if(com.equals("/content_view.do")) {
 			command = new BContentCommand();
 			command.execute(request, response);
@@ -88,11 +89,19 @@ public class BFrontController extends HttpServlet {
 		} else if(com.equals("/delete.do")) {
 			command = new BDeleteCommand();
 			command.execute(request, response);
-			viewPage = "list.do"; // 삭제가 완료되면 list페이지로 이동한다.
+			viewPage = "list.do"; // 삭제가 완료되면 list페이지로 이동한다
 		} else if(com.equals("/modify.do")) {
 			command = new BModifyCommand();
 			command.execute(request, response);
-			viewPage = "list.do"; // 수정이 완료되면 list페이지로 이동한다.
+			viewPage = "list.do"; // 수정이 완료되면 list페이지로 이동한다
+		} else if(com.equals("/reply_view.do")) {
+			command = new BReplyViewCommand();
+			command.execute(request, response);
+			viewPage = "reply_view.jsp"; // 답변 페이지로 바로 간다
+		} else if(com.equals("/reply.do")) {
+			command = new BReplyCommand();
+			command.execute(request, response);
+			viewPage = "list.do"; // 답변이 완료되면 list.do페이지로 이동한다
 		}
 		
 		// 디스패쳐 객체로 viewPage를 담아 요청한다.
