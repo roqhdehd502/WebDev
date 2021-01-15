@@ -69,6 +69,8 @@ public class Dao {
 	}
 
 	public Dto contentView(String bId) {
+		upHit(bId);
+		
 		Dto dtos = null;
 		
 		Connection connection = null;
@@ -189,6 +191,7 @@ public class Dao {
 	
 	public void reply(String bId, String bName, String bTitle,
 		String bContent, String bGroup, String bStep, String bIndent) {
+		replyShape(bGroup, bStep);
 		
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -236,6 +239,95 @@ public class Dao {
 			
 			int rn = preparedStatement.executeUpdate();
 			System.out.println("delete 반환 결과: " + rn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+
+	public void write(String bName, String bTitle, String bContent) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "INSERT INTO mvc_board (bId, bName,"
+							+ " bTitle, bContent,"
+							+ " bHit, bGroup,"
+							+ " bStep, bIndent) "
+						 + "VALUES (mvc_board_seq.nextval, ?,"
+							+ " ?, ?,"
+							+ " 0, mvc_board_seq.currval,"
+							+ " 0, 0 )";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, bName);
+			preparedStatement.setString(2, bTitle);
+			preparedStatement.setString(3, bContent);
+			
+			int rn = preparedStatement.executeUpdate();
+			System.out.println("write 반환 결과: " + rn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+
+	private void replyShape(String strGroup, String strStep) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE mvc_board "
+					+ "SET bStep = bStep + 1 " // 답변줄을 하나 추가한다
+					+ "WHERE bGroup = ? " // 해당 게시글 그룹에 해당되어
+					+ "AND bStep > ?"; // 추가할 답변 수가 기존 답변줄의 수보다 더 적다는 조건하에
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(strGroup));
+			preparedStatement.setInt(2, Integer.parseInt(strStep));
+
+			int rn = preparedStatement.executeUpdate();
+			System.out.println("replyShape 반환 결과: " + rn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	private void upHit(String bId) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE mvc_board "
+					     + "SET bHit = bHit + 1 "
+					     + "WHERE bId = ?";
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, bId);
+			
+			int rn = preparedStatement.executeUpdate();
+			System.out.println("upHit 반환 결과: " + rn);				
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

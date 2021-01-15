@@ -61,7 +61,7 @@ public class FrontController extends HttpServlet {
 		
 		if (com.equals("/input.do")) {
 			command = new ImportCommand();
-			command.execute(request, response);
+			command.execute(request, response);	
 			viewPage = "input.jsp";
 		} else if (com.equals("/inputCheck.do")) {
 			viewPage = "inputCheck.jsp";

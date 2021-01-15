@@ -16,6 +16,7 @@ import edu.bit.ex.command.ListCommand;
 import edu.bit.ex.command.ModifyCommand;
 import edu.bit.ex.command.ReplyCommand;
 import edu.bit.ex.command.ReplyViewCommand;
+import edu.bit.ex.command.WriteCommand;
 
 /**
  * Servlet implementation class FrontController
@@ -74,7 +75,7 @@ public class FrontController extends HttpServlet {
 		} else if (com.equals("/modify.do")) {
 			command = new ModifyCommand();
 			command.execute(request, response);
-			viewPage = "modify.jsp";
+			viewPage = "list.do";
 		} else if (com.equals("/reply_view.do")) {
 			command = new ReplyViewCommand();
 			command.execute(request, response);
@@ -82,13 +83,17 @@ public class FrontController extends HttpServlet {
 		} else if (com.equals("/reply.do")) {
 			command = new ReplyCommand();
 			command.execute(request, response);
-			viewPage = "reply.jsp";
+			viewPage = "list.do";
 		} else if (com.equals("/delete.do")) {
 			command = new DeleteCommand();
 			command.execute(request, response);
-			viewPage = "delete.jsp";
+			viewPage = "list.do";
 		} else if (com.equals("/write_view.do")) {
 			viewPage = "write_view.jsp";
+		} else if (com.equals("/write.do")) {
+			command = new WriteCommand();
+			command.execute(request, response);
+			viewPage = "list.do";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
