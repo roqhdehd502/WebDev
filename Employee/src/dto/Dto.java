@@ -33,6 +33,8 @@ public class Dto {
 	private String dname; // DEPT
 	private String loc; // DEPT
 	
+	private String date; // Insert용 hiredate DAO에서 변환한다
+	
 	public Dto() { }
 	
 	public Dto(String loc) {
@@ -142,5 +144,13 @@ public class Dto {
 
 	public void setLoc(String loc) {
 		this.loc = loc;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 }
