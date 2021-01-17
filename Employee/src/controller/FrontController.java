@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import command.CheckCommand;
 import command.Command;
 import command.ImportCommand;
 import command.ListCommand;
@@ -64,6 +65,8 @@ public class FrontController extends HttpServlet {
 			command.execute(request, response);	
 			viewPage = "input.jsp";
 		} else if (com.equals("/inputCheck.do")) {
+			command = new CheckCommand();
+			command.execute(request, response);
 			viewPage = "inputCheck.jsp";
 		} else if (com.equals("/list.do")) {
 			command = new ListCommand();

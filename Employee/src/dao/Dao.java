@@ -186,4 +186,68 @@ public class Dao {
 		}
 		return dtos;
 	}
+	
+	// 사원 정보 입력
+	public void empWrite(String empno, String ename, String job, String mgr, String hiredate, String sal, String comm) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "INSERT INTO emp01 (empno, ename, job,"
+							+ " mgr, hiredate, sal, comm) "
+						 + "VALUES (?, ?, ?,"
+							+ " ?, ?, ?, ?)"; 
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(empno));
+			preparedStatement.setString(2, ename);
+			preparedStatement.setString(3, job);
+			preparedStatement.setInt(4, Integer.parseInt(mgr));
+			preparedStatement.setTimestamp(5, Timestamp.valueOf(hiredate));
+			preparedStatement.setInt(6, Integer.parseInt(sal));
+			preparedStatement.setInt(7, Integer.parseInt(comm));
+			
+			int rn = preparedStatement.executeUpdate();
+			System.out.println("empWrite 반환 결과: " + rn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	// 부서 정보 입력
+	public void deptWrite(String deptno, String dname, String loc) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connection = dataSource.getConnection();
+
+			String query = "INSERT INTO dept01 (deptno, dname, loc) "
+						 + "VALUES (?, ?, ?)"; 
+			preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, Integer.parseInt(deptno));
+			preparedStatement.setString(2, dname);
+			preparedStatement.setString(3, loc);
+			
+			int rn = preparedStatement.executeUpdate();
+			System.out.println("deptWrite 반환 결과: " + rn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
 }

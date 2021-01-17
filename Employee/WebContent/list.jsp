@@ -44,10 +44,11 @@
 	         <td>${dto.deptno}</td>
 	         <td>${dto.dname}</td>
 	         <td>${dto.loc}</td>
-	         <td><a href="">관리</a></td>
+	         <td><a href="modify_view.do?empno=${dto.empno}">관리</a></td>
 	      </tr>
 	  </c:forEach>
    </table>
+   <input type="button" value="돌아가기" onclick="location.href='input.do'">
 </body>
 </html>
 </html>

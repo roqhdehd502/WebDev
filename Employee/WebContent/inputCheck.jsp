@@ -18,7 +18,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Input Check</title>
 </head>
 <body>
 	<h1>정보입력이 정상적으로 처리 되었습니다.</h1>

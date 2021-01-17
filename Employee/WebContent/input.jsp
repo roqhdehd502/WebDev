@@ -20,7 +20,7 @@
 		직급<input type="text" name="job"><br>
 		상사<select>
 			<c:forEach var="mgr" items="${mgrList}">
-				<option value="${mgr.empno}">(${mgr.empno})${mgr.ename}</option>
+				<option value="${mgr.mgr}">(${mgr.empno})${mgr.ename}</option>
 			</c:forEach>
 		</select><br>
 		입사일<input type="date" name="hiredate"><br>
@@ -36,7 +36,8 @@
 				<option value="${loc.loc}">${loc.loc}</option>
 			</c:forEach>
 		</select><br>
-		<input type="submit" value="입력">
+		<input type="submit" value="입력하기">&nbsp;&nbsp;
+		<input type="button" value="입력하지 않고 리스트보기" onclick="location.href='list.do'">
 	</form>
 </body>
 </html>
