@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 문자열 값 초기화
+		var varType = "123";
+		// 문자열에 대한 타입을 출력
+		console.log("varType type : " + typeof(varType));
+		// 숫자형이랑 + 연산이 되어도 문자열끼리 합쳐진다.
+		console.log("varType : " + (varType + 1000));
+		
+		// 문자열 -> 숫자형 타입 변환
+		varType = Number(varType);
+		// 숫자형에 대한 타입을 출력
+		console.log("varType type : " + typeof(varType));
+		// 숫자형으로 타입 캐스팅이 되었으므로 숫자끼리 연산처리가 된다.
+		console.log("varType : " + (varType + 1000));
+	</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function outter() { // 외부 함수
+			function inner() { // 내부 함수
+				var title = 'coding everybody';
+				alert(title);
+			}
+			inner();
+		}
+		outter(); // title 변수가 최초로 한 번만 호출된다.
+	</script>
+</body>
+</html>
