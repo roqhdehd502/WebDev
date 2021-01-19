@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>구구단 홀수로 찍기</title>
+</head>
+<body>
+	<table border="1">
+		<h1>구구단을 2단부터 9단까지 홀수로 출력</h1>
+		<script type="text/javascript">
+		document.write("<tr>");
+		for (var i = 3; i <= 9; i+=2) {
+			document.write("<td>" + i + "단 </td>");		
+		}
+		document.write("</tr>");
+		
+		for (var i = 1; i <= 9; i++) {
+			document.write("<tr>");
+			for (var j = 3; j <= 9; j+=2) {
+				document.write("<td>" + j + " * " + i + " = " + i*j + "</td>");
+			}
+			document.write("</tr>");
+		}
+		</script>
+	</table>
+</body>
+</html>
