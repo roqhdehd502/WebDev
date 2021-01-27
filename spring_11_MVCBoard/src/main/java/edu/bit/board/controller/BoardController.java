@@ -17,55 +17,65 @@ public class BoardController {
 
 	private BoardService boardService;
 
+	// 게시글 리스트
 	@GetMapping("/list")
 	public void list(Model model) {
 		log.info("list()");
 		model.addAttribute("list", boardService.getList());
 	}
 
+	// 글작성 페이지
 	@GetMapping("/write_view")
 	public String write_view(Model model) {
 		log.info("write_view()");
 		return "/write_view";
 	}
 
+	// 글작성
 	@PostMapping("/write")
 	public String write(BoardVO boardVO, Model model) throws Exception {
 		log.info("write()");
 		boardService.writeBoard(boardVO);
 		return "redirect:list";
 	}
-	/*
-	 * @GetMapping("/list3") public void list2(Criteria cri, Model model) { log.info("list3"); log.info(cri); model.addAttribute("list",
-	 * boardService.getList(cri));
-	 * 
-	 * int total = boardService.getTotal(cri); log.info("total" + total);
-	 * 
-	 * model.addAttribute("pageMaker", new PageDTO(cri,total)); }
-	 * 
-	 * @RequestMapping("/content_view") public String content_view(BoardVO boardVO,Model model) throws Exception{ log.info("content_view");
-	 * model.addAttribute("content_view", boardService.get(boardVO.getbId())); return "content_view"; }
-	 * 
-	 * @RequestMapping("/reply_view") public String reply_view(BoardVO boardVO, Model model) throws Exception{ log.info("reply_view()");
-	 * model.addAttribute("reply_view", boardService.get(boardVO.getbId())); return "reply_view"; }
-	 * 
-	 * @RequestMapping("/reply") public String reply(BoardVO boardVO, Model model) throws Exception {
-	 * 
-	 * log.info("reply()"); boardService.writeReply(boardVO);
-	 * 
-	 * return "redirect:list"; } //ajax 遺�遺�
-	 * 
-	 * @RequestMapping("/rest/list") public String restList() {
-	 * 
-	 * log.info("rest/list");
-	 * 
-	 * return "ajaxList"; }
-	 * 
-	 * //jquery list
-	 * 
-	 * @GetMapping("/jquerylist") public String jquerylist(Model model) { log.info("jquerylist"); model.addAttribute("list", boardService.getList());
-	 * return "jqueryList"; }
-	 * 
-	 * @GetMapping("/security") public String security(Model model) { return "security/index"; }
-	 */
+
+	// 작성글 페이지
+	@GetMapping("/content_view")
+	public String content_view(BoardVO boardVO, Model model) throws Exception {
+		log.info("content_view()");
+		model.addAttribute("content_view", boardService.getBoard(boardVO.getbId()));
+		return "/content_view";
+	}
+
+	// 작성글 수정
+	@PostMapping("/modify")
+	public String modify(BoardVO boardVO, Model model) throws Exception {
+		log.info("modify()");
+		boardService.modifyBoard(boardVO);
+		return "redirect:list";
+	}
+
+	// 작성글 삭제
+	@GetMapping("/delete")
+	public String delete(BoardVO boardVO, Model model) throws Exception {
+		log.info("delete()");
+		boardService.deleteBoard(boardVO);
+		return "redirect:list";
+	}
+
+	// 작성글 답변 페이지
+	@GetMapping("/reply_view")
+	public String reply_view(BoardVO boardVO, Model model) throws Exception {
+		log.info("reply_view()");
+		model.addAttribute("reply_view", boardService.getReply(boardVO.getbId()));
+		return "/reply_view";
+	}
+
+	// 작성글 답변
+	@PostMapping("/reply")
+	public String reply(BoardVO boardVO, Model model) throws Exception {
+		log.info("reply()");
+		boardService.replyBoard(boardVO);
+		return "redirect:list";
+	}
 }

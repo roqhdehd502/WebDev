@@ -5,20 +5,25 @@ import java.util.List;
 import edu.bit.board.vo.BoardVO;
 
 public interface BoardService {
-	// public void writeReply(BoardVO board);
 
-	// public BoardVO get(int bno);
-
-	// public boolean modify(BoardVO board);
-
-	// public boolean remove(Long bno);
-
+	// 게시글 리스트
 	public List<BoardVO> getList();
 
+	// 게시글 작성
 	public void writeBoard(BoardVO boardVO);
 
-	// public int remove(int bId);
+	// 작성글 확인
+	public BoardVO getBoard(int getbId);
 
-	// public int getTotal(Criteria cri);
-	// public List<BoardVO> getList(Criteria criteria);
+	// 작성글 삭제
+	public void deleteBoard(BoardVO boardVO);
+
+	// 작성글 수정
+	public void modifyBoard(BoardVO boardVO);
+
+	// 답변글 작성 이동
+	public BoardVO getReply(int getbId);
+
+	// 답변글 작성
+	public void replyBoard(BoardVO boardVO);
 }
