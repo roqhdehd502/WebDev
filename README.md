@@ -11,23 +11,23 @@
 
 # HTML 교육기간
 
-<a href = "https://github.com/roqhdehd502/WebDev/tree/main/JSPWebDevMK2">2020.12. ~ 2020.12.</a>
+<a href = "#">2020.12.24 ~ 2020.12.</a>
 
 # CSS 교육기간
 
-<a href = "https://github.com/roqhdehd502/WebDev/tree/main/JSPWebDevMK2">2020.12. ~ 2020.12.</a>
+<a href = "#">2020.12. ~ 2020.12.</a>
 
 # JavaScript 교육기간
 
-2021.01.18 ~ 2021.01.28
+<a href = "#">2021.01.18 ~ 2021.01.28</a>
 
 # JSP 교육기간
 
-<a href = "https://github.com/roqhdehd502/WebDev/tree/main/JSPWebDevMK2">2020.12.24 ~ 2021.01.</a>
+<a href = "#">2020.12.24 ~ 2021.01.</a>
 
 # Spring 교육기간
 
-<a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_11_MVCBoard">2021.01.18 ~ 2021.</a>
+<a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_11_MVCBoard">2021.01.18 ~ 2021.01.29</a>
 
 # Oracle Database 교육기간
 
