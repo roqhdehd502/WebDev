@@ -3,6 +3,7 @@ package edu.bit.board.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.bit.board.mapper.BoardMapper;
 import edu.bit.board.vo.BoardVO;
@@ -30,6 +31,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	// 작성글 페이지
+	@Transactional
 	@Override
 	public BoardVO getBoard(int bno) {
 		mapper.upHit(bno);
@@ -59,6 +61,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	// 답글 수행
+	@Transactional // 트랙잭션으로 병행제어를 한다
 	@Override
 	public void replyBoard(BoardVO boardVO) {
 		mapper.reply(boardVO);
