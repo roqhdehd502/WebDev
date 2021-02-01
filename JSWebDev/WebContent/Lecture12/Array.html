@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr1 = new Array("박용택", "이승엽", "정상호", "한기주", "장원삼");
+		var arr2 = new Array("손승락", "이호준", "박세웅", "해커", "윤호솔");		
+		var arr3 = new Array(1, 6, 3, 5, 4, 2);
+		
+		console.log("arr1.length : " + arr1.length);
+		console.log("arr1.join : " + arr1.join());
+		console.log("arr1 : " + arr1);
+		console.log("arr1.reverse : " + arr1.reverse());
+		console.log("arr1.sort : " + arr1.sort());
+		console.log("arr1.slice : " + arr1.slice());
+		console.log("arr1.concat : " + arr1.concat(arr2));
+		console.log("arr1.reverse : " + arr1.reverse());
+		
+		console.log("arr3.sort(a-b) : " + arr3.sort(function(a, b) {return a-b}));
+		console.log("arr3.sort(b-a) : " + arr3.sort(function(a, b) {return b-a}));
+	</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		window.console.log("window Object");
+		var newWindow = window.open("https://www.naver.com/", "openWindow",
+				"width=500, height=300");
+		
+		newWindow.moveTo(50, 50);
+		for(var i=0; i<1000; i++) {
+			newWindow.moveBy(1, 1);
+		}
+		
+		newWindow.moveTo(500, 600);
+		for(var i=0; i<200; i++) {
+			newWindow.resizeBy(-1, -1);
+		}
+	</script>
+</body>
+</html>

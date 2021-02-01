@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				내장함수
+			*/
+			
+			alert("내장함수 : 기본적으로 제공하는 함수");
+			console.log("내장함수 : 기본적으로 제공하는 함수");
+			
+			// 시간관련 함수
+			/*
+			var tiemoutId = setTimeout(function(){alert("3초 후 한번 실행됩니다.");}, 3000);
+			clearTimeout(tiemoutId);
+			
+			var intervalId = setInterval(function(){console.log("2초 마다 계속 실행됩니다.");}, 2000);
+			clearInterval(intervalId);
+			*/
+			
+			var printTimeOutId = setTimeout(function(){
+												clearInterval(printIntervalId);
+												console.log("종료!");
+												}, 7000);
+			var printIntervalId = setInterval(function(){console.log("*")}, 2000);
+			
+			
+			// eval 함수
+			// : 문자열을 코드(소스)로 이용
+			var varEval = "console.log('eval함수!')";
+			eval(varEval);
+			
+			varEval = "document.write('<p>eval함수</p>');";
+			eval(varEval);
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

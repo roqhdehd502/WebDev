@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Javascript</title>
+      <script>
+      
+         
+         /*Screen객체*/
+         
+         
+         function openWin(url, width, height) {
+         
+            console.log("screen.width : " + screen.width);
+            console.log("screen.height : " + screen.height);
+            
+            var left = screen.width/2 - width/2;
+            var top = screen.height/2 - height/2;
+            var opt = "width = " + width + ", height = " + height + ", left = " + left + ", top = " + top;
+            
+            open(url, "newWin", opt);
+         
+         }
+         
+         openWin("https://yahoo.com", 800, 500); // 해상도 만큼 크기를 조절
+         
+         </script>  
+   </head>
+   <body>
+   
+   </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				in, with 키워드
+			*/
+			
+			var objName = {
+				
+				name : "Lee sun sin",
+				nation : "Korea",
+				gender  : "men",
+				character : "good"
+				
+			};
+			
+			// in 키워드
+			console.log("nation" in objName);		// true
+			console.log("age" in objName);			// false
+			
+			// with 키워드
+			with(objName) {
+				console.log("name : " + name);
+				console.log("nation : " + nation);
+				console.log("gender : " + gender);
+				console.log("character : " + character);
+			}
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

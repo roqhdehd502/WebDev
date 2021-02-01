@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>JavaScript</title>
+		
+		<script>
+			window.onload = function(){
+				var me = document.getElementById("mouseEvent");
+				me.addEventListener("click", function(){
+					console.log("click event!!");
+				}, false);
+				
+				me.addEventListener("mouseover", function(){
+					console.log("mouseover event!!");
+				}, false);
+				
+				me.addEventListener("mouseout", function(){
+					console.log("mouseout event!!");
+				}, false);
+				
+				me.addEventListener("mousemove", function(e){
+					console.log("mousemove event!!");
+					//console.log("x : " + e.clientX + ", y : " + e.clientX);
+				}, false);
+				
+				me.addEventListener("mousedown", function(e){
+					console.log("mousedown event!!");
+				}, false);
+				
+				me.addEventListener("mouseup", function(e){
+					console.log("mouseup event!!");
+				}, false);
+				
+				me.addEventListener("dblclick", function(e){
+					console.log("dblclick event!!");
+				}, false);
+			}
+		</script>
+		
+		<style>
+			#mouseEvent {
+				width: 200px; height: 100px;
+				line-height: 100px;
+				text-align: center;
+				font-size: 1.2em;
+				background-color: #f00;
+				color: #fff;
+				font-weight: bolder;
+			}
+		</style>
+	</head>
+	
+	<body>
+	
+		<div id="mouseEvent">mouse event</div>
+	
+	</body>
+
+</html>

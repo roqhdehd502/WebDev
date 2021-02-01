@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var strEn = "ABCDEFE";
+		var strKo = new String("가나다라마바사아");
+		String.prototype.temp = 123;
+		
+		console.log("strEn : " + strEn);
+		console.log("strKo : " + strKo);
+		
+		console.log("strEn.length : " + strEn.length);
+		console.log("strKo.length : " + strKo.length);
+		
+		console.log("strEn.constructor : " + strEn.constructor);
+		console.log("strKo.constructor : " + strKo.constructor);
+		
+		console.log("strEn.temp : " + strEn.temp);
+		console.log("strKo.temp : " + strKo.temp);
+		
+		console.log("charAt() : " + strEn.charAt(3));
+		console.log("indexOf() : " + strEn.indexOf("E"));
+		console.log("lastIndexOf() : " + strEn.lastIndexOf("E"));
+		console.log("concat() : " + strEn.concat("abcdef"));
+		console.log("replace() : " + strEn.replace("A", "a"));
+		console.log("split() : " + strEn.split("C"));
+		console.log("slice() : " + strEn.slice(2, 4));
+		console.log("substring() : " + strEn.substring(1, 4));
+		
+		var lc = strEn.toLowerCase();
+		console.log("lc : " + lc);
+		var up = lc.toUpperCase();
+		console.log("up : " + up);
+	</script>
+</body>
+</html>

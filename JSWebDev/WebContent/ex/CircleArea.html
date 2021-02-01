@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>원의 넓이를 구해보자</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function cicleArea() {
+			var rad = 0;
+			
+			this.getRad = function () {
+				return this.rad;
+			};
+			
+			this.setRad = function(rad) {
+				if(!isNaN(rad)) {
+					this.rad = rad;
+				} else {
+					console.log("rad is NaN(Not a Number)!");
+				};
+			}
+			
+			this.getArea = function(){
+				return (this.rad * this.rad * 3.14).toFixed(2);
+			};
+		}
+		
+		var inputRad = prompt("원의 넓이를 입력할 반지름을 입력하세요.");
+		
+		var circle = new cicleArea();
+		circle.setRad(inputRad);
+		
+		document.write("circle.getArea : " + circle.getArea())
+		console.log("circle.getArea : " + circle.getArea());	
+	</script>
+</body>
+</html>

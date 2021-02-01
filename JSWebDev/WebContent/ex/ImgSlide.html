@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>이미지를 슬라이드 해보자</title>
+	
+	<!--  
+	참고 사이트(https://rgy0409.tistory.com/2999)
+	-->
+	
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.bxslider').bxSlider({
+				auto: true, // 자동 애니메이션 효과
+				speed: 500, // 애니메이션 속도(ms)
+				pause: 5000, // 해당 이미지 유지 시간
+				mode: 'horizontal', // 슬라이드 모드('fade', 'horizontal', 'vertical')
+				autoControls: true, // 시작 및 중지버튼 활성화
+				pager: true, // 페이지 표시
+				captions: true, // 이미지 위 텍스트 기재 여부
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<ul class="bxslider">
+			<!-- 이후 jsp에 응용할 때 for문을 적용해보자 -->
+			<li><a href="#"><img width="1000px" height="281" src="https://sites.google.com/site/thisisjustatest2294/_/rsrc/1468742544208/project-resources/image-search/google-image-search/Screen%20Shot%202015-11-28%20at%201.14.27%20PM.png"></a></li>
+			<li><a href="#"><img width="1000px" height="281" src="https://media.corporate-ir.net/media_files/IROL/17/176060/Oct18/Amazon%20logo.PNG"></a></li>
+			<li><a href="#"><img width="1000px" height="281" src="https://1000logos.net/wp-content/uploads/2020/09/SpaceX-Logo.jpg"></a></li>
+			<li><a href="#"><img width="1000px" height="281" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/AMD_Logo.svg/1200px-AMD_Logo.svg.png"></a></li>
+			<li><a href="#"><img width="1000px" height="281" src="https://logos-download.com/wp-content/uploads/2016/10/Nvidia_logo.png"></a></li>
+		</ul>
+	</div>
+</body>
+</html>

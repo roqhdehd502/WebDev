@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>BackGroundBox</title>
+	<script>
+		function colorChange() {
+			var colorSet = ["#ffff00", "#66cc00", "#ffccff", "#ccff00", "#3399ff"];
+			
+			var randomSelect = Math.floor(Math.random() * colorSet.length);
+			var bodyTag = document.getElementById("activate");
+			 bodyTag.style.backgroundColor = colorSet[randomSelect];
+		}
+	</script>
+</head>
+<body id="activate">
+	<button onclick="colorChange()">배경 색상이 바뀌는 버튼</button>
+</body>
+</html>

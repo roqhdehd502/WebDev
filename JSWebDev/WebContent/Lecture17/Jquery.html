@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<script>
+         window.onload = function() {           
+            jQuery("p").css("color", "red");
+            $("p").css("fontWeight", "bolder");
+            
+            var myJQ = jQuery("p");
+            myJQ.css("textDecoration", "underLine");
+            
+            myJQ.css("width", "300px").css("border", "1px solid #ff0000");
+            
+            $("p").css("fontSize", "2em").css("height", "300px").css("lineHeight", "300px").css("textAlign", "center");
+         };
+    </script>
+</head>
+<body>
+	<p> Hello jQuery! </p>
+</body>
+</html>

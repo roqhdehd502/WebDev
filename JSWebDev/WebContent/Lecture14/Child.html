@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<script type="text/javascript">
+		window.onload = function() {
+			var str = "";
+			str += "<p id='jsTitle'> javsscript&node.js </p>";
+			str += "<img id='logoImg', src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png',";
+			str += "width='170', height='67', tempData='logoImg'>";
+			
+			document.body.innerHTML = str;
+			
+			var titleNode = document.getElementById("jsTitle");
+			titleNode.parentNode.removeChild(titleNode);
+			
+			var logoNode = document.getElementById("logoImg");
+			logoNode.parentNode.removeChild(logoNode);
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

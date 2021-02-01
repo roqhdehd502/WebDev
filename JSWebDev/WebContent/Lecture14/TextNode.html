@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload = function() {
+			// 요소노드
+			var elementNode = document.createElement("p");
+			// 텍스트노드
+			var textNode = document.createTextNode("javascript & node.js");
+			
+			elementNode.appendChild(textNode);
+			document.body.appendChild(elementNode);
+		}
+	</script>
+</body>
+</html>

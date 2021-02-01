@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var objDate1 = new Date();
+		var objDate2 = new Date(2010, 10, 10);
+		var objDate3 = new Date(2010, 10, 10, 10, 10, 10, 100);
+		
+		console.log(objDate1);
+		console.log(objDate2);
+		console.log(objDate3);
+		
+		// getYear() / setYear()
+		// 1900년도 기준(1900 + objDate1.getYear())
+		console.log("objDate1.getYear : " + objDate1.getYear());
+		console.log("objDate1.getYear : " + (objDate1.getYear() + 1900));
+		
+		// 권장 메소드 : getFullYear() / setFullYear()
+		console.log("objDate1.getFullYear() : " + objDate1.getFullYear());
+		
+		// getMonth() / setMonth()
+		console.log("objDate1.getMonth() : " + objDate1.getMonth());
+		
+		// getDate() / setDate()
+		console.log("objDate1.getDate() : " + objDate1.getDate());
+		
+		// getDay() / setDay()
+		console.log("objDate1.getDay() : " + objDate1.getDay());
+	</script>
+</body>
+</html>

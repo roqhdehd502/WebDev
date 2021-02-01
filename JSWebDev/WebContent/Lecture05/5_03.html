@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				배열 메소드
+			*/
+			
+			//indexOf()
+			var varArrIndex = new Array(123, "ABC", "가나다", "abc", "가나다", "123");
+			console.log("varArrIndex.indexOf(\"가나다\") : " + varArrIndex.indexOf("가나다"));
+			console.log("varArrIndex.lastIndexOf(\"가나다\") : " + varArrIndex.lastIndexOf("가나다"));
+			console.log("varArrIndex.indexOf(123) : " + varArrIndex.indexOf(123));
+			console.log("varArrIndex.lastIndexOf(123) : " + varArrIndex.lastIndexOf(123));
+			console.log("varArrIndex.indexOf(\"XYZ\") : " + varArrIndex.indexOf("XYZ"));
+			
+			
+			//concat()
+			var varArrFir = new Array("ABC", "DEF", "GHI", "JKL");
+			var varArrSec = new Array("가나다", "라마바", "사아차", "카타파");
+			var varArrRes = varArrFir.concat(varArrSec);
+			console.log("varArrFir : " + varArrFir);
+			console.log("varArrSec : " + varArrSec);
+			console.log("varArrRes : " + varArrRes);
+			
+			
+			//join()
+			var varArrJoin = new Array("AB", "CD", "EF", "HI");
+			console.log("varArrJoin : " + varArrJoin.join());
+			console.log("varArrJoin : " + varArrJoin.join(" | "));
+			console.log("varArrJoin : " + varArrJoin.join(":"));
+			console.log("varArrtoString : " + varArrJoin.toString());
+			
+			
+			//sort()
+			var varArrSort = new Array("E", "B", "A", "C", "D");
+			console.log("varArrSortBefore : " + varArrSort);
+			console.log("varArrSort : " + varArrSort.sort());
+			console.log("varArrSortAfter : " + varArrSort);
+			
+			
+			//reverce()
+			var varArrReverse = new Array("E", "B", "A", "C", "D");
+			console.log("varArrReverseBefore : " + varArrReverse);
+			console.log("varArrReverse.reverse() : " + varArrReverse.reverse());
+			console.log("varArrReverseAfter : " + varArrReverse);
+			
+			
+			//push()
+			var varArrPush = new Array("ABC", "DEF");
+			console.log("varArrPush : " + varArrPush.push("가나다", "마바사"));
+			console.log("varArrPush : " + varArrPush);
+			
+			
+			//shift(), pop();
+			var varArrShiftPop = new Array("가", "나", "다", "라", "마");
+			console.log("varArrShiftPop.shift() : " + varArrShiftPop.shift());
+			console.log("varArrShiftPop : " + varArrShiftPop);
+			
+			console.log("varArrShiftPop.pop() : " + varArrShiftPop.pop());
+			console.log("varArrShiftPop : " + varArrShiftPop);
+			
+			varArrShiftPop.unshift("가");
+			varArrShiftPop[varArrShiftPop.length] = "마";
+			console.log("varArrShiftPopOri : " + varArrShiftPop);
+			
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

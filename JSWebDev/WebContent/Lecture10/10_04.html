@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				for in을 이용한 객체 접근
+			*/
+			
+			var objCar = {
+				width : "3m",
+				height : "2m",
+				cc : "2000cc",
+				energy : 100,
+				speed : function(power) {
+					return this.energy * power;
+				}
+			};
+			
+			var print = "";
+			for(var key in objCar) {
+				
+				//if(typeof objCar[key] == "function") continue;
+				print += key + " : " + objCar[key] + "\n"
+			
+			}
+			
+			console.log(print);
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

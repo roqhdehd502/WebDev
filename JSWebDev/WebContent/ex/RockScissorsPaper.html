@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>가위 바위 보를 겨뤄보자.</title>
+	
+	<script type="text/javascript">
+		function RSPAlgorithm() {
+			var com = 0;
+			var user = "";
+			
+			this.getUser = function () {
+				return this.user;
+			};
+			
+			this.setUser = function(user) {
+				if(typeof(user)) {
+					this.user = user;
+				} else {
+					console.log("user is not String!");
+				};
+			};
+			
+			this.getCom = function () {
+				// 0: 가위, 1: 바위, 2: 보
+				com = Math.floor(Math.random() * 3);
+				return this.com;
+			};
+			
+			this.setCom = function(com) {
+				if(!isNaN(com)) {
+					this.com = com;
+				} else {
+					console.log("com is NaN(Not a Number)!");
+				};
+			};
+			
+			this.compareResult = function(user) {
+				var result = "";
+				
+				switch(this.com) {
+				case 0 : // 가위
+					if(user === "scissors") {
+						result = "비겼습니다!";
+					} else if (user === "rock") {
+						result = "이겼습니다!";
+					} else if (user === "paper") {
+						result = "졌습니다...";
+					}
+					break;
+				case 1 : // 바위
+					if(user === "scissors") {
+						result = "졌습니다...";
+					} else if (user === "rock") {
+						result = "비겼습니다!";
+					} else if (user === "paper") {
+						result = "이겼습니다!";
+					}
+					break;
+				case 2 : // 보
+					if(user === "scissors") {
+						result = "이겼습니다!";
+					} else if (user === "rock") {
+						result = "졌습니다...";
+					} else if (user === "paper") {
+						result = "비겼습니다!";
+					}
+					break;
+				}
+				
+				return result;
+			};
+		}
+		
+		var input = prompt("rock, scissors or paper?");
+		
+		var rspResult = new RSPAlgorithm();
+
+		document.write("결과는? : " + rspResult.compareResult(rspResult.setUser(input)))
+		console.log("rspResult.compareResult : " + rspResult.compareResult(rspResult.setUser(input)));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

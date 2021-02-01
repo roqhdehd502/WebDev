@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				함수 반환
+			*/
+			
+			function funName(){
+				
+				return function(x) {
+					for(var i=1; i<10; i++){
+						console.log(x + " * " + i + " = " + (x*i));
+					}
+				};
+				
+			}
+			
+			var returnFun = funName();
+			returnFun(4);
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

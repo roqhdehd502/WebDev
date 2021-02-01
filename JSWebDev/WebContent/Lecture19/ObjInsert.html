@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+	        
+	        var wrapObj = $("#wrap");
+	        
+	        /*
+	           객체 생성
+	        */
+	        var divObj = $("<div> Hello jQuery! </div>");
+	        
+	        /*
+	           객체 삽입
+	        */
+	        
+	        // 추가할내용.appendTo(목표);
+	        // 목표.append(추가할내용);
+	        // 추가할 내용이 뒤로간다
+	        //divObj.appendTo(wrapObj);      //.appendTo()
+	        //wrapObj.append(divObj);      //.append()
+	        
+	        // 추가할내용.prependTo(목표);
+	        // 목표.prepend(추가할내용);
+	        // 추가할 내용이 앞으로간다
+	        divObj.prependTo(wrapObj);   //.prependTo()
+	        //wrapObj.prepend(divObj);      //.prepend()
+	        
+	        // 특정 위치 뒤에 노드를 삽입한다
+	        //divObj.insertAfter(wrapObj);   //.insertAfter()
+	        //wrapObj.after(divObj);      //.after()
+	        
+	        // 특정 위치 앞에 노드를 삽입한다
+	        //divObj.insertBefore(wrapObj);   //.insertBefore()
+	        //wrapObj.before(divObj);      //.before()
+	        
+	     });
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+			$("#wrap > .content1 > .p").appendTo($("#wrap > .content2"));
+		})	
+	</script>
+	
+	<style type="text/css">
+		#wrap .content1 .p {
+			background: #ff0000;
+		}
+		#wrap .content2 .p {
+			background: #ffff00;
+		}
+	</style>
+
+</head>
+<body>
+	<div id="wrap">
+         <div class="content1">
+            <p class="p">content1</p>
+         </div>
+         
+         <div class="content2">
+            <p class="p">content2</p>
+         </div>
+    </div>
+</body>
+</html>

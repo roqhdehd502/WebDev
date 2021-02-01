@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("input[type='text']").css("color", "#ff0000"); // 속성 선택자
+			$("input[type='password']").css("color", "#ff0000"); // 속성 선택자
+			$("input:submit").css("fontsize", "4em"); // 필터 선택자
+			var chk = $("input:checked").val(); // 필터 선택자
+			console.log("chk : " + chk);
+			
+			$("li:nth-child(2n+1)").css("background", "ffff00"); // 함수 선택자
+		})
+	</script>
+</head>
+<body>
+	<form>
+         UserID <input type="text">
+         <br />
+         UserPW <input type="password">
+         <br />
+         Submit <input type="submit" value="submit">
+         <br />
+         Reset <input type="reset" value="reset">
+         <br />
+         Food <br />
+         사과<input type="checkbox" id="apple" value="사과" />
+         바나나<input type="checkbox" id="banana" value="바나나" checked />
+         수박<input type="checkbox" id="watermelon" value="수박" />
+         <br />
+         
+         <ul>
+            <li>이만기</li>
+            <li>이승엽</li>
+            <li>이종범</li>
+            <li>이재학</li>
+            <li>이순철</li>
+            <li>이길동</li>
+            <li>이동국</li>
+         </ul>
+      </form>
+</body>
+</html>

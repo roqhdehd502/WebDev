@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<script type="text/javascript">
+		window.onload = function() {
+			function addHandler() {
+				console.log("click!!");
+			};
+			
+			function removeHandler() {
+				console.log("event remove!!");
+				ceA.removeEventListener("click", addHandler, false);
+			};
+			
+			var ceA = document.getElementById("cEventAdd");
+			ceA.addEventListener("click", addHandler, false);
+			
+			var ceR = document.getElementById("cEventRem");
+			ceR.addEventListener("click", removeHandler, false);
+		}
+	</script>
+</head>
+<body>
+	<div id="cEventAdd">click event</div>
+	<div id="cEventRem">remove event</div>
+</body>
+</html>

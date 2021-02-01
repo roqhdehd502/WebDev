@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				객체 접근
+			*/
+			
+			var objName = {
+				nation : "korea",
+				capital : "seoul",
+				language : "hangeul",
+				population : 51000000,
+				nationalAnthem : function() {
+					console.log("Play korean national anthem~~");
+				}
+			};
+			
+			console.log("objName.nation : " + objName.nation);
+			console.log("objName.population : " + objName.population);
+			
+			console.log("objName[\"nation\"] : " + objName["nation"]);
+			console.log("objName[\"population\"] : " + objName["population"]);
+			
+			objName.nationalAnthem();
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>시간이 갱신되는 페이지</title>
+	
+	 <script>
+	 	// 시간 설정
+        function startInterval() {
+            setInterval(printCurrentDate, 1000);
+        }
+
+        // 시간 출력
+        function printCurrentDate() {
+            document.getElementById("my_date").innerHTML = new Date();
+        }
+        
+        /*
+        setInterval(function() {
+        	var timer = new Date();
+        	var h = timer.getHours();
+        	var m = timer.getMinutes();
+        	var s = timer.getSeconds();
+        	documnet.getElementById('clock').innerHTML =
+        		h + ":" + m + ":" + s;
+        }, 1000);
+        */	
+    </script>
+</head>
+<body>
+    <button onclick="startInterval()">시간 갱신 시작</button>
+    <p id="my_date"></p>
+    <!--  
+    <h1 id="clock"></h1>
+    -->
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		function headerClick() {
+			console.log("click");
+		}			
+	</script>
+	<style>
+		#cEvent {
+			width: 200px; height: 100px;
+			line-height: 100px;
+			text-align: center;
+			font-size: 1.2em;
+			background-color: #f00;
+			color: #fff;
+			font-weight: bolder;
+		}
+		
+		#cEvent:hover {
+			background-color: plum;
+		}
+	</style>
+</head>
+<body>
+	<div id="cEvent" onclick="headerClick();">
+		click!
+	</div>
+</body>
+</html>
