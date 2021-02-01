@@ -31,7 +31,7 @@
 
 <a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_11_MVCBoard">2021.01.18 ~ 2021.01.29</a><br>
 <a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_board_5_test">게시판</a><br>
-<a href = "#">직원리스트</a>
+<a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_emp_5_test">직원리스트</a>
 
 # Oracle Database 교육기간
 
