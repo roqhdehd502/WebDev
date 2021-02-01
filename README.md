@@ -23,7 +23,7 @@
 
 # JSP 교육기간
 
-<a href = "#">2020.12.24 ~ 2021.01.15</a><br>
+<a href = "https://github.com/roqhdehd502/WebDev/tree/main/JSPWebDev">2020.12.24 ~ 2021.01.15</a><br>
 <a href = "#">게시판</a><br>
 <a href = "#">직원리스트</a>
 
