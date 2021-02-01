@@ -24,10 +24,14 @@
 # JSP 교육기간
 
 <a href = "#">2020.12.24 ~ 2021.01.15</a>
+<a href = "#">게시판</a>
+<a href = "#">직원리스트</a>
 
 # Spring 교육기간
 
 <a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_11_MVCBoard">2021.01.18 ~ 2021.01.29</a>
+<a href = "#">게시판</a>
+<a href = "#">직원리스트</a>
 
 # Oracle Database 교육기간
 
