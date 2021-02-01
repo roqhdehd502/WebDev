@@ -10,6 +10,7 @@ import lombok.ToString;
 @Getter
 
 // 페이징의 요소를 담는 객체
+
 public class PageVO {
 	// private int displayPageCount = 10; // 한 페이지당 보여지는 게시글 수
 	private int startPage; // 화면에 보여지는 시작번호
@@ -40,11 +41,11 @@ public class PageVO {
 	}
 
 	// 해당 페이지 번호에 따라 URL 뒤에 붙게한다.
+
 	public String makeQuery(int page) {
-		UriComponents uriComponentsBuilder = UriComponentsBuilder.newInstance().queryParam("pageNum", page) // pageNum = 3
-				.queryParam("amount", cri.getAmount()) // pageNum=3&amount=10
-				.build(); // ?pageNum=3&amount=10
-		return uriComponentsBuilder.toUriString(); // ?pageNum=3&amount=10 ����
+		UriComponents uriComponentsBuilder = UriComponentsBuilder.newInstance().queryParam("pageNum", page).queryParam("amount", cri.getAmount())
+				.build();
+		return uriComponentsBuilder.toUriString();
 	}
 
 }

@@ -43,7 +43,6 @@ public class EmpController {
 
 		int total = empService.getTotal(cri);
 		log.info("total" + total);
-
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 	}
 

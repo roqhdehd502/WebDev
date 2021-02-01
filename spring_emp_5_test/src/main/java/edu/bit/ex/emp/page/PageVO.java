@@ -17,7 +17,6 @@ public class PageVO {
 	private Criteria cri;
 
 	public PageVO(Criteria cri, int total) {
-
 		this.cri = cri;
 		this.total = total;
 
@@ -35,8 +34,7 @@ public class PageVO {
 
 	public String makeQuery(int page) {
 		UriComponents uriComponentsBuilder = UriComponentsBuilder.newInstance().queryParam("pageNum", page) // pageNum = 3
-				.queryParam("amount", cri.getAmount()) // pageNum=3&amount=10
-				.build(); // ?pageNum=3&amount=10
-		return uriComponentsBuilder.toUriString(); // ?pageNum=3&amount=10 ����
+				.queryParam("amount", cri.getAmount()).build();
+		return uriComponentsBuilder.toUriString();
 	}
 }
