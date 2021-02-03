@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>MyBoard - List</title>  <!-- <c:url value=""/>  -->
+  <title>EMP - List</title>  <!-- <c:url value=""/>  -->
 
   <!-- Custom fonts for this template -->
   <link href="<c:url value="/resources/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -25,7 +24,37 @@
 
   <!-- Custom styles for this page -->
   <link href="<c:url value="/resources/vendor/datatables/dataTables.bootstrap4.min.css"/>" rel="stylesheet">
-
+  
+  <!-- Jquery -->
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  
+  <script type="text/javascript">
+  	$(document).ready() {
+		makeList();
+	});
+	
+	function makeList() {
+		var list = "";
+			list += "<c:forEach items='${list}' var='dto'>";
+			list += "<tr>";
+			list += "	<td>${dto.empno}</td>";
+			list += "	<td>${dto.ename}</td>";
+			list += "	<td>${dto.job}</td>";
+			list += "	<td>${dto.mgr}</td>";
+			list += "	<td>${dto.hiredate}</td>";
+			list += "	<td>${dto.sal}</td>";
+			list += "	<td>${dto.comm}</td>";
+			list += "	<td>${dto.deptno}</td>";
+			list += "	<td>${dto.dname}</td>";
+			list += "	<td>${dto.loc}</td>";
+			list += "	<td><a href='modify_view?empno=${dto.empno}'>관리</a></td>";
+			list += "</tr>";
+			list += "</c:forEach>";
+		
+		$("#empList").innerHTML = list;
+	}	
+  </script>
 </head>
 
 <body id="page-top">
@@ -37,11 +66,11 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#"> <!-- 인덱스 페이지 -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3"><img src="<c:url value="/resources/img/myboard_logo.png"/>" width="112" height="28"></div>
+        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
       </a>
 
       <!-- Divider -->
@@ -49,7 +78,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="#"> <!-- 인덱스 페이지 -->
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -340,70 +369,85 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">게시판</h1>
-          <p class="mb-4"> 게시판 매너를 지켜주세요.</p>
+          <h1 class="h3 mb-2 text-gray-800">EMP List</h1>
+          <p class="mb-4">직원 정보 리스트 페이지입니다.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary"><button class="button" onclick="location.href='write_view'">글쓰기</button></h6>
+              <h6 class="m-0 font-weight-bold text-primary"><input type="button" value="직원정보작성" onclick="location.href='write_view'"></h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>번호</th>
-                      <th>이름</th>
-                      <th>제목</th>
-                      <th>날짜</th>
-                      <th>조회수</th>
+                      <th>사원번호</th>
+                      <th>사원이름</th>
+                      <th>직급(업무)</th>
+                      <th>상사(이름)</th>
+                      <th>입사일</th>
+                      <th>급여</th>
+                      <th>커미션</th>
+                      <th>부서번호</th>
+                      <th>부서이름</th>
+                      <th>부서위치</th>
+                      <th>관리</th>
                     </tr>
                   </thead>
-                  <!--  
+                   
                   <tfoot>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                      <th>사원번호</th>
+                      <th>사원이름</th>
+                      <th>직급(업무)</th>
+                      <th>상사(번호)</th>
+                      <th>입사일</th>
+                      <th>급여</th>
+                      <th>커미션</th>
+                      <th>부서번호</th>
+                      <th>부서이름</th>
+                      <th>부서위치</th>
+                      <th>관리</th>
                     </tr>
                   </tfoot>
-                  -->
+                
                   <tbody>
-                  
-                  
-                  	<c:forEach items="${list}" var="dto">
+                  <div id="empList">
+                  <c:forEach items="${list}" var="dto">
                     <tr>
-                      <td>${dto.bId}</td>
-					  <td>${dto.bName}</td>
-					  <td>
-					  	<c:forEach begin="1" end="${dto.bIndent}">[Re]</c:forEach>
-					    <a href="content_view?bId=${dto.bId}">${dto.bTitle}</a></td>
-					  <td><fmt:formatDate value="${dto.bDate}" pattern="YYYY-MM-DD"/></td>
-					  <td>${dto.bHit}</td>
-                    </tr>
-                    </c:forEach>          
-                         
+				        <td>${dto.empno}</td>
+				        <td>${dto.ename}</td>
+				        <td>${dto.job}</td>
+				        <td>${dto.mgr}</td>     
+				        <td>${dto.hiredate}</td>		        
+				        <td>${dto.sal}</td>
+				        <td>${dto.comm}</td>
+				        <td>${dto.deptno}</td>
+				        <td>${dto.dname}</td>
+				        <td>${dto.loc}</td>
+				        <td><a href="modify_view?empno=${dto.empno}">관리</a></td>
+	      		    </tr>         
+                   </c:forEach>
+                  </div>
+                  
+                  
                   </tbody>
                 </table>
-                
                 
                 <c:if test="${pageMaker.prev}">
 					<a href="list2${pageMaker.makeQuery(pageMaker.startPage - 1)}">«</a>
 				</c:if>
 
-				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage}" var="idx">
 					<c:out value="${pageMaker.cri.pageNum == idx?'':''}" />
 					<a href="list2${pageMaker.makeQuery(idx)}">${idx}</a>
 				</c:forEach>
 		
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-					<a href="list2${pageMaker.makeQuery(pageMaker.endPage +1)}">»</a>
-				</c:if><br>
-                         
+					<a href="list2${pageMaker.makeQuery(pageMaker.endPage +1)}"> » </a>
+				</c:if> <br>   
+                
                 
               </div>
             </div>

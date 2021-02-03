@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     
 <!DOCTYPE html>
 <html>
@@ -43,7 +44,7 @@
 <body>
 	<h1>사원 정보 입력</h1>
 	<hr>
-	<form id="loginForm" action="write" method="post">
+	<form:form modelAttribute="empVO" id="loginForm" action="write" method="post">
 		사원번호&nbsp;<input id="empno" type="number" name="empno"><br>
 		
 		사원이름&nbsp;<input id="ename" type="text" name="ename"><br>
@@ -75,6 +76,6 @@
 		<input id="sbmBtn" type="submit" value="입력하기">&nbsp;&nbsp;
 		<input id="resBtn" type="reset" value="입력초기화">&nbsp;&nbsp;
 		<input type="button" value="돌아가기" onclick="location.href='list'">
-	</form>
+	</form:form>
 </body>
 </html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.bit.ex.emp.mapper.EmpMapper">
+	<!-- 전체 직원 정보 리스트 -->
+	<select id="getList" resultType="edu.bit.ex.emp.vo.EmpVO">
+	<![CDATA[
+		SELECT e.empno, e.ename, e.job, e.mgr, e.hiredate, e.sal, e.comm, d.deptno, d.dname, d.loc FROM dept01 d, emp01 e WHERE d.deptno = e.deptno AND e.mgr IN (SELECT employee.mgr FROM emp01 employee, emp01 manager WHERE employee.mgr = manager.empno)
+	]]>
+	</select>
+	
+	<!-- 페이징을 적용한 전체 직원 정보 리스트 -->
+	<select id="getListWithPaging" resultType="edu.bit.ex.emp.vo.EmpVO">
+	<![CDATA[
+		SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM (SELECT e.empno, e.ename, e.job, e.mgr, e.hiredate, e.sal, e.comm, d.deptno, d.dname, d.loc FROM emp01 e, dept01 d WHERE e.deptno = d.deptno) A WHERE ROWNUM <= #{pageNum}*#{amount}) WHERE RNUM > (#{pageNum}-1)*#{amount}
+	]]>
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*)	from emp01
+	</select>
+	
+	<!-- 직급정보 불러오기 -->
+	<select id="jobList" resultType="edu.bit.ex.emp.vo.EmpVO">
+	<![CDATA[
+		SELECT DISTINCT job FROM emp01
+	]]>
+	</select>
+	
+	<!-- 상사정보 불러오기 -->
+	<select id="mgrList" resultType="edu.bit.ex.emp.vo.EmpVO">
+	<![CDATA[
+		SELECT manager.empno, manager.ename FROM emp01 employee, emp01 manager WHERE employee.mgr = manager.empno GROUP BY manager.ename, manager.empno
+	]]>
+	</select>
+	
+	<!-- 부서정보 불러오기 -->
+	<select id="deptList" resultType="edu.bit.ex.emp.vo.EmpVO">
+	<![CDATA[
+		SELECT deptno, dname FROM dept01
+	]]>
+	</select>
+	
+	<!-- emp/dept 입력 -->
+	<insert id="insert">
+	<![CDATA[
+		INSERT INTO emp01 (empno, ename, job, mgr, hiredate, sal, comm, deptno) VALUES (#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
+	]]>
+	</insert>
+	
+	<!--  게시글 수정(deptno 더미데이터) -->
+	<update id="modify">
+	<![CDATA[
+		UPDATE emp01 SET deptno = (ROUND(DBMS_RANDOM.VALUE(1, 4),0)*10) WHERE empno = #{empno}
+	]]>
+	</update>
+</mapper>

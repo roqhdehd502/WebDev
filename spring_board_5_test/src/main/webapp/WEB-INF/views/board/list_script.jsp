@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,13 +18,37 @@
   <!-- Custom fonts for this template -->
   <link href="<c:url value="/resources/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
   <!-- Custom styles for this template -->
   <link href="<c:url value="/resources/css/sb-admin-2.min.css"/>" rel="stylesheet">
-
   <!-- Custom styles for this page -->
   <link href="<c:url value="/resources/vendor/datatables/dataTables.bootstrap4.min.css"/>" rel="stylesheet">
-
+  
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  
+  <script type="text/javascript">
+  	$(document).ready() {
+  		makeList();
+  	});
+  	
+  	function makeList() {
+		var list = "";
+			list += "<c:forEach items='${list}' var='dto'>";
+			list += "<tr>";
+			list += "	<td>${dto.bId}</td>";
+			list += "	<td>${dto.bName}</td>";
+			list += "	<td>";
+			list += "		<c:forEach begin='1' end='${dto.bIndent}'>[Re]</c:forEach>";
+			list += "		<a href=lcontent_view?bId=${dto.bId}'>${dto.bTitle}</a>";
+			list += "	</td>";
+			list += "	<td><fmt:formatDate value='${dto.bDate}' pattern='YYYY-MM-DD'/></td>";
+  			list += "	<td>${dto.bHit}</td>";
+  			list += "</tr>";
+  			list += "</c:forEach>";
+  		
+  		$("#empList").innerHTML = list;
+  	}
+  </script>	
 </head>
 
 <body id="page-top">
@@ -374,18 +397,8 @@
                   -->
                   <tbody>
                   
-                  
-                  	<c:forEach items="${list}" var="dto">
-                    <tr>
-                      <td>${dto.bId}</td>
-					  <td>${dto.bName}</td>
-					  <td>
-					  	<c:forEach begin="1" end="${dto.bIndent}">[Re]</c:forEach>
-					    <a href="content_view?bId=${dto.bId}">${dto.bTitle}</a></td>
-					  <td><fmt:formatDate value="${dto.bDate}" pattern="YYYY-MM-DD"/></td>
-					  <td>${dto.bHit}</td>
-                    </tr>
-                    </c:forEach>          
+                  	<div id="empList"></div>  
+                  	  
                          
                   </tbody>
                 </table>

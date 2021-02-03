@@ -33,7 +33,6 @@ public class BoardController {
 	public void list2(Criteria cri, Model model) {
 		log.info("list2()");
 		log.info(cri);
-		// model.addAttribute("list", boardService.getList());
 		model.addAttribute("list", boardService.getList(cri));
 
 		int total = boardService.getTotal(cri);
@@ -58,10 +57,9 @@ public class BoardController {
 
 	// 작성글 페이지
 	@GetMapping("/board/content_view")
-	public String content_view(BoardVO boardVO, Model model) throws Exception {
+	public void content_view(BoardVO boardVO, Model model) throws Exception {
 		log.info("content_view()");
 		model.addAttribute("content_view", boardService.getBoard(boardVO.getbId()));
-		return "/board/content_view";
 	}
 
 	// 작성글 수정

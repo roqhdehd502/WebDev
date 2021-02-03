@@ -29,4 +29,6 @@ public interface EmpMapper {
 	// 직원 정보 입력하기
 	public void insert(EmpVO empVO);
 
+	// 직원 정보 수정하기(더미 데이터)
+	public void modify(EmpVO empVO);
 }

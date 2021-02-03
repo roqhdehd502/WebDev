@@ -1,14 +1,11 @@
 package edu.bit.ex.emp.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -58,27 +55,17 @@ public class EmpController {
 
 	// 직원 정보 작성
 	@PostMapping("/emp/write")
-	public String write(@Valid EmpVO empVO, BindingResult result) {
+	public String write(@Valid EmpVO empVO, Model model, BindingResult result) {
 		log.info("write()");
 
 		String page = "redirect:list";
 		EmpValidator validator = new EmpValidator();
 		validator.validate(empVO, result);
 
+		model.addAttribute("empVO", empVO);
+
 		if (result.hasErrors()) {
 			page = "reditect:write_view";
-			List<FieldError> list = result.getFieldErrors();
-
-			if (null != result.getFieldErrors()) {
-				for (FieldError fe : result.getFieldErrors()) {
-					log.info("Field: " + fe.getField());
-					log.info("Code: " + fe.getCode());
-					log.info("ObjectName: " + fe.getObjectName());
-					log.info("RejectedValue: " + fe.getRejectedValue());
-					log.info("DefaultMessage: " + fe.getDefaultMessage());
-					// log.info("에러메시지: " + fe.getCode());
-				}
-			}
 		}
 		return page;
 	}
