@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>가위 바위 보를 겨뤄보자.</title>
+	
+	<script type="text/javascript">
+	function RPSPlayer(your) {
+
+	      var rps = ['가위', '바위', '보'];
+	      var selfNum = 0;
+	      var yourRPS = your;
+	      
+	      var comImg = document.createElement("img");
+	      var userImg = document.createElement("img");
+
+	      this.setSelfNum = function() {
+	         selfNum = Math.floor(Math.random() * 3);
+	                  
+	         if(selfNum == 0) { // 가위
+	        	 comImg.setAttribute("src", "https://www.pinclipart.com/picdir/middle/536-5360227_scissors-hand-rock-paper-scissors-png-clipart.png");
+	        	 comImg.setAttribute("width", 200);
+	        	 comImg.setAttribute("height", 200);
+	         } else if (selfNum == 1) { // 바위
+	        	 comImg.setAttribute("src", "https://www.pngitem.com/pimgs/m/109-1094400_rock-paper-scissors-png-clipart-rock-paper-scissor.png");
+	        	 comImg.setAttribute("width", 200);
+	        	 comImg.setAttribute("height", 200);
+			 } else if (selfNum == 2) { // 보
+				 comImg.setAttribute("src", "https://www.clipartkey.com/mpngs/m/109-1094319_rock-paper-scissors-png.png");
+				 comImg.setAttribute("width", 200);
+				 comImg.setAttribute("height", 200);
+			 }
+	      };
+
+	      this.result = function() {
+
+	         this.setSelfNum();
+
+	         switch (yourRPS) {
+
+	         case "가위":
+	            if (rps[selfNum] == "가위") {
+	               document.write("컴퓨터<br>");
+	               document.body.appendChild(comImg);
+	               document.write("<hr>");
+	               
+	               document.write("유저는<br>");
+	               userImg.setAttribute("src", "https://www.pinclipart.com/picdir/middle/536-5360227_scissors-hand-rock-paper-scissors-png-clipart.png");
+	               userImg.setAttribute("width", 200);
+		           userImg.setAttribute("height", 200);
+	               document.body.appendChild(userImg);
+	               document.write("<hr>");
+	               
+	               document.write("무승부입니다" + "<br>");
+	            } else if (rps[selfNum] == "바위") {
+	               document.write("컴퓨터<br>");
+		           document.body.appendChild(comImg);
+		           document.write("<hr>");
+		               
+		           document.write("유저는<br>");
+	               userImg.setAttribute("src", "https://www.pinclipart.com/picdir/middle/536-5360227_scissors-hand-rock-paper-scissors-png-clipart.png");
+	               userImg.setAttribute("width", 200);
+		           userImg.setAttribute("height", 200);
+	               document.body.appendChild(userImg);
+	               document.write("<hr>");
+	               
+	               document.write("컴퓨터 WIN!" + "<br>");
+	            } else if (rps[selfNum] == "보") {
+	               document.write("컴퓨터<br>");
+		           document.body.appendChild(comImg);
+		           document.write("<hr>");
+		               
+		           document.write("유저는<br>");
+	               userImg.setAttribute("src", "https://www.pinclipart.com/picdir/middle/536-5360227_scissors-hand-rock-paper-scissors-png-clipart.png");
+	               userImg.setAttribute("width", 200);
+		           userImg.setAttribute("height", 200);
+	               document.body.appendChild(userImg);
+	               document.write("<hr>");
+	               
+	               document.write("유저 WIN!" + "<br>");
+	            }
+	            break;
+
+	         case "바위":
+	            if (rps[selfNum] == "바위") {
+	               document.write("컴퓨터<br>");
+		           document.body.appendChild(comImg);
+		           document.write("<hr>");
+		               
+		           document.write("유저는<br>");
+	               userImg.setAttribute("src", "https://www.pngitem.com/pimgs/m/109-1094400_rock-paper-scissors-png-clipart-rock-paper-scissor.png");
+	               userImg.setAttribute("width", 200);
+		           userImg.setAttribute("height", 200);
+	               document.body.appendChild(userImg);
+	               document.write("<hr>");
+
+	               document.write("무승부입니다" + "<br>");
+	            } else if (rps[selfNum] == "보") {
+	               document.write("컴퓨터<br>");
+		           document.body.appendChild(comImg);
+		           document.write("<hr>");
+		               
+		           document.write("유저는<br>");
+	               userImg.setAttribute("src", "https://www.pngitem.com/pimgs/m/109-1094400_rock-paper-scissors-png-clipart-rock-paper-scissor.png");
+	               userImg.setAttribute("width", 200);
+		           userImg.setAttribute("height", 200);
+	               document.body.appendChild(userImg);
+	               document.write("<hr>");
+	               
+	               document.write("컴퓨터 WIN!" + "<br>");
+	            } else if (rps[selfNum] == "가위") {
+	               document.write("컴퓨터<br>");
+		           document.body.appendChild(comImg);
+		           document.write("<hr>");
+		               
+		           document.write("유저는<br>");
+	               userImg.setAttribute("src", "https://www.pngitem.com/pimgs/m/109-1094400_rock-paper-scissors-png-clipart-rock-paper-scissor.png");
+	               userImg.setAttribute("width", 200);
+		           userImg.setAttribute("height", 200);
+	               document.body.appendChild(userImg);
+	               document.write("<hr>");
+	               
+	               document.write("유저 WIN!" + "<br>");
+	            }
+	            break;
+
+	         case "보":
+	            if (rps[selfNum] == "보") {
+	               document.write("컴퓨터<br>");
+			       document.body.appendChild(comImg);
+			       document.write("<hr>");
+			       
+			       document.write("유저는<br>");
+	               userImg.setAttribute("src", "https://www.pinclipart.com/picdir/middle/536-5360227_scissors-hand-rock-paper-scissors-png-clipart.png");
+	               userImg.setAttribute("width", 200);
+		           userImg.setAttribute("height", 200);
+	               document.body.appendChild(userImg);
+	               document.write("<hr>");
+	               
+	               document.write("무승부입니다" + "<br>");
+	            } else if (rps[selfNum] == "가위") {
+	               document.write("컴퓨터<br>");
+				   document.body.appendChild(comImg);
+				   document.write("<hr>");
+				       
+				   document.write("유저는<br>");
+	               userImg.setAttribute("src", "https://www.pinclipart.com/picdir/middle/536-5360227_scissors-hand-rock-paper-scissors-png-clipart.png");
+	               userImg.setAttribute("width", 200);
+		           userImg.setAttribute("height", 200);
+	               document.body.appendChild(userImg);
+	               document.write("<hr>");
+	               
+	               document.write("컴퓨터 WIN!" + "<br>");
+	            } else if (rps[selfNum] == "바위") {
+	               document.write("컴퓨터<br>");
+				   document.body.appendChild(comImg);
+				   document.write("<hr>");
+				       
+				   document.write("유저는<br>");
+	               userImg.setAttribute("src", "https://www.pinclipart.com/picdir/middle/536-5360227_scissors-hand-rock-paper-scissors-png-clipart.png");
+	               userImg.setAttribute("width", 200);
+		           userImg.setAttribute("height", 200);
+	               document.body.appendChild(userImg);
+	               document.write("<hr>");
+	               
+	               document.write("유저 WIN!" + "<br>");
+	            }
+	            break;
+
+	         default:
+	            document.write(yourRPS + " 잘못된 입력 입니다 .다시입력하세요");
+	         }
+	      };
+	   }
+
+	   var rps = prompt("(가위, 바위, 보)를 입력하세요");
+	   var player = new RPSPlayer(rps);
+	   player.result();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

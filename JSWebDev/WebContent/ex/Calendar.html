@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>달력을 구현해보자</title>
+	
+	<!--  
+	참고 사이트(https://offbyone.tistory.com/230)
+	-->
+	
+	<!-- jQuery UI -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="js/datepicker-ko.js"></script>
+	
+	<!-- datepicker를 이용한 날짜 적용 스크립트 -->
+	<script type="text/javascript">
+		$(function(){
+		    $("#date").datepicker();
+		});
+	</script>
+</head>
+<body>
+	<input type="text" name="date" id="date" size="12"/>
+</body>
+</html>

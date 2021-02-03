@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			var ce = document.getElementById("cEvent");
+			/*
+			// Way.1
+			ce.onclick = function() {
+				console.log("click!");
+				//ce.onclick = null;
+			}
+			*/
+			// Way.2
+			ce.onclick = clickEventHandler;
+			function clickEventHandler() {
+				console.log("clickEventHandler");
+				//ce.onclick = null;
+			}
+			
+		}			
+	</script>
+	<style>
+		#cEvent {
+			width: 200px; height: 100px;
+			line-height: 100px;
+			text-align: center;
+			font-size: 1.2em;
+			background-color: #f00;
+			color: #fff;
+			font-weight: bolder;
+		}
+		
+		#cEvent:hover {
+			background-color: plum;
+		}
+	</style>
+</head>
+<body>
+	<div id="cEvent" onclick="headerClick();">
+		click!
+	</div>
+</body>
+</html>

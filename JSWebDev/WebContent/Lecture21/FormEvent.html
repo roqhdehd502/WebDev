@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#sbmBtn").click(function() {
+				if($("#uId").val() == "") {
+					alert("user id blank!!");
+					event.preventDefault();
+				} else if($("#uPw").val() == "") {
+					alert("user pw blank!!");
+					event.preventDefault();
+				} else {
+					alert("login ok!!");
+					$("#loginForm").submit();
+				}
+			});
+			
+			$("#resBtn").click(function() {
+				alert("reset ok!!");
+				$("#loginForm")[0].reset();
+			});
+		});
+	</script>
+</head>
+<body>
+	<form id="loginForm" action="http://www.google.com">
+			USER ID : <input id="uId" type="text" name="uId"><br>
+			USER PW : <input id="uPw" type="password" name="upw"><br>
+			<input id="sbmBtn" type="submit" value="SUBMIT">
+			<input id="resBtn" type="reset" value="RESET">
+	</form>
+</body>
+</html>

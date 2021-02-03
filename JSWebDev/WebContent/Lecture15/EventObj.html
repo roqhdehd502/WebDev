@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>JavaScript</title>
+		
+		<script>
+		
+			window.onload = function() {
+				function addHandler(e){
+					console.log("click!!");
+					console.log("this : " + this);
+					
+					//IE8 이전버전을 고려
+					var event = e || window.event;
+					for( var key in event ) {
+						console.log(key + " : " + event[key]);
+					}
+					
+				};
+			
+				var objD = document.getElementById("objDiv");
+				objD.addEventListener("click", addHandler, false);
+			
+				var objP = document.getElementById("objPar");
+				objP.addEventListener("click", addHandler, false);
+			};
+			
+		</script>
+		
+		<style>
+			#objDiv {
+				width: 200px; height: 100px;
+				line-height: 100px;
+				text-align: center;
+				font-size: 1.2em;
+				background-color: #f00;
+				color: #fff;
+				font-weight: bolder;
+			}
+			
+			#objPar {
+				width: 200px; height: 100px;
+				line-height: 100px;
+				text-align: center;
+				font-size: 1.2em;
+				background-color: #0f0;
+				color: #fff;
+				font-weight: bolder;
+			}
+			
+			#eventProp {
+				width: 500px;
+				border: 1px solid #cccccc;
+			}
+		</style>
+	</head>
+	
+	<body>
+	
+		<div id="objDiv">Object Division</div>
+		<p id="objPar">Object Paragraph</p>
+	
+	</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<script>			
+			$(document).ready(function(){
+				
+				//each() 배열
+				$("p").each(function(index, item){
+					console.log($(item).text());
+					//console.log($(this).text());				//item == this
+					if(index % 2 == 0) {
+						$(item).css("background", "#dfdfdf");
+						//$(this).css("background", "#dfdfdf");	//item == this
+					} else {
+						$(item).css("background", "#cccccc");
+						//$(this).css("background", "#cccccc");	//item == this
+					}
+				});
+				
+				
+				//html() / text()
+				console.log("htmlMethod : " + $("#htmlMethod").html());
+				$("#htmlMethod").html("<strong>new</strong> " + $("#textMethod").html());
+				
+				console.log("textMethod : " + $("#textMethod").text());
+				$("#textMethod").text("new " + $("#textMethod").text());
+				
+				
+				//addClass() 클래스 속성 추가
+				//removeClass() 클래스 속성 제거
+				$("#addClass").addClass("addCla");
+				$(".addCla").css("background", "#ff0000");
+				
+				$(".remCla").css("background", "#00ff00");
+				//$("#removeClass").removeClass("remCla");
+				//$(".remCla").removeClass("remCla");
+				$(".remCla").css("background", "#0000ff");
+				
+				
+				//attr()  속성 추가
+				//attr()  속성 검사 (2개이상인 경우 첫번째 객체 이용)
+				//removeAttr(속성)  속성 제거
+				$("#attrMethod img").attr("src", "img/logo.png");
+				console.log("#attrMethod img src : " + $("#attrMethod img").attr("src"));
+				
+				$("#attrMethod img").removeAttr("src");
+				console.log("#attrMethod img src : " + $("#attrMethod img").attr("src"));
+				
+				
+				//css()	스타일 추가
+				//css()	스타일 검사
+				$("#cssMethod").css("width", "300px").css("height", "100px");
+				$("#cssMethod").css("background", "#ff0000");
+				
+				console.log("cssMethod css width : " + $("#cssMethod").css("width"));
+				console.log("cssMethod css height : " + $("#cssMethod").css("height"));
+				console.log("cssMethod css background : " + $("#cssMethod").css("background"));
+				
+				
+				//remove()	// 문서 객체 제거
+				//empty()	// 문서 객체 내부 제거
+				$("#removeMthod").remove();
+				$("#emptyMthod").empty();
+			});
+			
+		</script>
+</head>
+<body>
+		<p> Hello javascript! </p>
+		<p> Hello jQuery! </p>
+		<p> Hello node.js! </p>
+		
+		<div id="htmlMethod"> html() 메서드 </div>
+		<div id="textMethod"> text() 메서드 </div>
+		
+		<div id="addClass"> addClass() 메서드 </div>
+		<div id="removeClass" class="remCla"> removeClass() 메서드 </div>
+		
+		<div id="attrMethod">
+			<img>
+			<br>
+			<img>
+		</div>
+		
+		<div id="cssMethod"> CSS METHOD </div>
+		
+		<div id="removeMthod"> Remove Object! </div>
+		<div id="emptyMthod"> Empty Object! </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<script type="text/javascript">
+		$(function() {
+			$("*").css("fontsize", "1.1em");
+			$("li").css("color", "#0000ff");
+			$("#item").css("background", "#ffff00").css("width", "300px");
+			$(".seoul").css("background", "#ff0000");
+			$("#wrap p").css("border", "2px solid #ccccc");
+			$("#wrap > p").css("border", "5px solid #cccccc");
+		})
+	</script>
+</head>
+<body>
+	<div id="wrap">
+         <p>jQuery selector</p>
+         <div id="centent">
+            <h1>centent</h1>
+            <p>ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅌ</p>
+            <p>ABCDEFGHIJKLMN</p>
+         </div>
+         <div id="item">
+            <ul>
+               <li class="seoul">서울</li>
+               <li class="gyeonggi_do">경기도</li>
+               <li>충청도</li>
+               <li>전라도</li>
+               <li>경상도</li>
+               <li>강원도</li>
+               <li>제주도</li>
+            </ul>
+         </div>
+      </div>
+</body>
+</html>

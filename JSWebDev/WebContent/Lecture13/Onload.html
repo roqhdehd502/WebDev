@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		// 호출된 웹문서가 모두 완료된 후 자동으로 실행된다.
+		window.onload = function() {
+			console.log("FIRST");
+		};
+		
+		// 코드라인 순으로 마지막에 적용된 onload만 출력된다.
+		window.onload = function() {
+			console.log("FOURTH");
+		};
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		console.log("SECOND!");
+	</script>
+	<script type="text/javascript">
+		console.log("THIRD!");
+	</script>
+</body>
+</html>

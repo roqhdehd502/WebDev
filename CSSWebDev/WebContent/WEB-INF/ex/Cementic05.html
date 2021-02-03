@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<style type="text/css">
+		#header {
+			width: 600px;
+			height: 50px;
+			background-color: green;
+		}
+		#content {
+			width: 600px;
+			height: 500px;
+			overflow: hidden;
+		}
+		
+		#left {
+			width: 100px;
+			height: 500px;
+			background-color: yellow;
+		}
+		
+		#center {
+			width: 400px;
+			height: 500px;
+			background-color: red;
+		}
+		
+		#right {
+			width: 100px;
+			height: 500px;
+			background-color: gray;
+		}
+		
+		#content #left,  #content #center, #content #right {
+			float: left;
+		}
+		#footer {
+			width: 600px;
+			height: 50px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		헤더
+	</div>
+	<div id="content">
+		<span id="left">컨텐츠 LEFT</span>
+		<span id="center">컨텐츠 CENTER</span>
+		<span id="right">컨텐츠 RIGHT</span>
+	</div>
+	
+	<div id="footer">
+		푸터
+	</div>
+</body>
+</html>

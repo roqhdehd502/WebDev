@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				객체 속성과 메서드
+			*/
+			
+			var objCar = {
+				width : "3m",
+				height : "2m",
+				cc : "2000cc",
+				energy : 100,
+				speed : function(power) {
+					return this.energy * power;
+				}
+			};
+			
+			console.log("objCar.speed : " + objCar.speed(2));
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<script type="text/javascript">
+		window.onload = function() {
+			// 객체 생성 방법.1
+			var imgNode = document.createElement("img");
+			var elementNode = document.createElement("p"); // 구분선(의미x)
+			imgNode.src = "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png";
+			imgNode.width = "100";
+			imgNode.height = "100";
+			
+			// 객체 생성 방법.2
+			var imgNode2 = document.createElement("img");
+			imgNode2.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png");
+			imgNode2.setAttribute("width", 100);
+			imgNode2.setAttribute("height", 100);
+			imgNode2.setAttribute("tempData", "logoImg");
+			
+			// 노드연결
+			document.body.appendChild(imgNode);
+			document.body.appendChild(elementNode);
+			
+			document.body.appendChild(imgNode2);
+		};
+	</script>
+</head>
+<body>
+	해당 바디태그에 내용을 기입하면 onload의 특성에 의해 본문이 나오고 출력된다.<br>
+	
+</body>
+</html>

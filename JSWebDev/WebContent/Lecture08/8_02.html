@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				매개변수와 반환(리턴)값
+			*/
+			
+			function funName(x, y, z) {
+				console.log("x : " + x);
+				console.log("y : " + y);
+				console.log("z : " + z);
+				
+				var result = x * y + z;
+				
+				return result;
+			}
+			
+			var varResult = 0;
+			
+			varResult = funName(2, 3, 4);
+			console.log("varResult : " + varResult);
+			
+			varResult = funName(2, 3, 4, 5);
+			console.log("varResult : " + varResult);
+			
+			varResult = funName(2, 3);
+			console.log("varResult : " + varResult);
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

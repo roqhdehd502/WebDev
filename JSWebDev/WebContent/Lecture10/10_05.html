@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				객체에 속성 추가 및 삭제
+			*/
+			
+			var objName = {
+				
+				name : "Lee sun sin",
+				nation : "Korea",
+				gender  : "men",
+				character : "good"
+				
+			};
+			
+			var print = "";
+			for(var key in objName) {
+				print += key + " : " + objName[key] + "\n"
+			}
+			console.log(print);
+			
+			//속성 추가
+			objName.talent = "fencing";
+			print = "";
+			for(var key in objName) {
+				print += key + " : " + objName[key] + "\n"
+			}
+			console.log(print);
+			
+			//속성 삭제
+			delete(objName.talent);
+			//delete objName.talent;
+			print = "";
+			for(var key in objName) {
+				print += key + " : " + objName[key] + "\n"
+			}
+			console.log(print);
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

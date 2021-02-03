@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				클로저(closure)
+				: free variable(자유변수)에 의해서 함수가 닫혀(closed)있다.
+			*/
+			
+			function funName(x){
+				
+				var varName = ":: 요청한 " + x + "에 대한 구구단::";
+				
+				return function() {
+					console.log(varName);
+					for(var i=1; i<10; i++){
+						console.log(x + " * " + i + " = " + (x*i));
+					}
+				};
+				
+			}
+			
+			//지역변수에 접근할 수 없다.(에러 발생)
+			//console.log("varName : " + varName);
+			
+			var returnFun = funName(5);
+			returnFun();
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

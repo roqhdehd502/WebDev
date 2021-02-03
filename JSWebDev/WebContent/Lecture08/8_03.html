@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				arguments
+			*/
+			var varArr;
+			
+			function funName() {
+				
+				return arguments;
+			}
+			
+			varArr = funName(1, 2, 3, 4, 5, 6, 7);
+			console.log("varArr : " + varArr);
+			console.log("varArr.length : " + varArr.length);
+			
+			for(var i in varArr) {
+				console.log("varArr[" + i + "] :" + varArr[i]);
+			}
+			
+			console.log("---------------------------------------");
+			
+			varArr = funName("A", "B", "C", "D");
+			console.log("varArr : " + varArr);
+			console.log("varArr.length : " + varArr.length);
+			
+			for(var i in varArr) {
+				console.log("varArr[" + i + "] :" + varArr[i]);
+			}
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

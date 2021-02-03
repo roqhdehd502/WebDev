@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>JavaScript</title>
+		
+		<script>
+		
+			window.onload = function(){
+				var lf = document.getElementById("loginForm");
+				lf.onsubmit = function() {
+					if(document.getElementById("uId").value == "") {
+						alert("user id blank!!");
+						return false;
+					} else if(document.getElementById("uPw").value == "") {
+						alert("user pw blank!!");
+						return false;
+					} else {
+						alert("login ok!!");
+						return true;
+					}
+				};
+			}
+		</script>
+			
+		<style>
+			
+		</style>
+	</head>
+	
+	<body>
+	
+		<form id="loginForm" action="http://www.google.com">
+			USER ID : <input id="uId" type="text" name="uId"><br>
+			USER PW : <input id="uPw" type="password" name="upw"><br>
+			<input id="sbmBtn" type="submit" value="SUBMIT">
+			<input id="resBtn" type="reset" value="RESET">
+		</form>
+	
+	</body>
+
+</html>

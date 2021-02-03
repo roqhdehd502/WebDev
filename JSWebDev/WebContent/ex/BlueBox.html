@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>BlueBox</title>
+	<script>
+		window.onload = function() {
+			function addHandler(){
+				var wrap = document.createElement("div");
+				var text = document.createTextNode("파란상자");
+				
+				wrap.style.margin = "10px 0px 10px 0px";
+				wrap.style.width = "200px";
+				wrap.style.height = "200px";
+				wrap.style.backgroundColor = "blue";
+				wrap.style.textAlign = "center";
+				wrap.style.fontWeight = "bold";
+				wrap.style.color = "white";
+				wrap.style.lineHeight = "200px";
+				
+				wrap.appendChild(text);
+				document.body.appendChild(wrap);
+				
+				console.log("사각형 생성");				
+			};
+					
+			var activate = document.getElementById("activate");
+			activate.addEventListener("click", addHandler, false);
+		};
+	</script>
+</head>
+<body>
+	<button onclick="activate" id="activate">사각형이 생기는 버튼</button>
+</body>
+</html>

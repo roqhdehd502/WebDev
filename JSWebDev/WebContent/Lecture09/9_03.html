@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Javascript</title>
+		<script>
+		
+			/*
+				내부함수
+				: 함수안에 또다른 함수
+			*/
+			
+			function outFun(width, height){
+				
+				console.log("triangle : " + triangle());
+				console.log("quadrangle : " + quadrangle());
+				
+				//삼각형 면적 계산
+				function triangle() {
+				
+					return (width * height) / 2;
+				
+				}
+				
+				//사각형 면적 계산
+				function quadrangle() {
+				
+					return width * height;
+				
+				}
+				
+			}
+			
+			outFun(3, 5);
+			
+			//triangle();
+			
+			</script>
+	
+	</head>
+	
+	<body>
+	</body>
+
+</html>

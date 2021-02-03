@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var wrapObj = $("#wrap");
+			
+			// <div>객체 생성 및 추가
+			var divObj = $("<div> Hello jQuery! </div>");
+			divObj.appendTo(wrapObj); // wrapObj에게 append하여 부모/자식관계 생성
+			divObj.css("background", "#ff0000");
+			
+			// <a>객체 생성 및 추가
+			var aObj = $("<a href='http://www.google.com' target='_blank'> google </a><br>");
+			aObj.appendTo(wrapObj);
+			
+			// <img>객체 생성 및 추가
+			var imgObj = $("<img src='img.logo.png'><br>");
+			imgObj.appendTo(wrapObj);
+			
+			// <img>, 속성객체 생성 및 추가
+			var tempObj = {
+					src : "img/arm_mbed.png",
+					width : 297,
+					height : 124,
+					border: "5px"
+			}
+			
+			var imgAObj = $("<img>", tempObj);
+			imgAObj.appendTo(wrapObj);
+		})	
+	</script>
+
+</head>
+<body>
+	<div id="wrap">
+		<div style="background: #ff0000;">Hello jQuery!</div>
+		<a href="http://www.google.com" target="_blank">google</a>
+		<br>
+		<img src="img/logo.png">
+		<br>
+		<img src="img/arm_mbed.png" border="5px" style="width: 297px; height: 124px;">
+	</div>
+</body>
+</html>
