@@ -48,4 +48,11 @@
 		INSERT INTO emp01 (empno, ename, job, mgr, hiredate, sal, comm, deptno) VALUES (#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
 	]]>
 	</insert>
+	
+	<!--  게시글 수정(deptno 더미데이터) -->
+	<update id="modify">
+	<![CDATA[
+		UPDATE emp01 SET deptno = (ROUND(DBMS_RANDOM.VALUE(1, 4),0)*10) WHERE empno = #{empno}
+	]]>
+	</update>
 </mapper>
