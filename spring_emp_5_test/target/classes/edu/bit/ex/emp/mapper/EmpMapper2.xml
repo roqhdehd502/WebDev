@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="emp">
+	<select id="selectEmpList" resultType="edu.bit.ex.emp.vo.EmpVO">
+		SELECT e.empno, e.ename, e.job, e.mgr, e.hiredate, e.sal, e.comm, d.deptno, d.dname, d.loc FROM dept01 d, emp01 e WHERE d.deptno = e.deptno AND e.mgr IN (SELECT employee.mgr FROM emp01 employee, emp01 manager WHERE employee.mgr = manager.empno)	
+	</select>
+</mapper>

@@ -6,6 +6,7 @@ import edu.bit.ex.board.page.Criteria;
 import edu.bit.ex.board.vo.BoardVO;
 
 public interface BoardMapper {
+
 	// 게시글 불러오기
 	public List<BoardVO> getList();
 

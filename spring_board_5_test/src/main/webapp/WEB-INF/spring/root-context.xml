@@ -12,7 +12,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName"
@@ -34,6 +34,7 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mapperLocations" value="classpath:/edu/bit/ex/board/mapper/*.xml" />
 	</bean>
+	
 	<!-- 1번 방식 사용을 위한 sqlSession -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
