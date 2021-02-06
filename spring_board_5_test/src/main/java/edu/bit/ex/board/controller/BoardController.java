@@ -17,7 +17,6 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 @Controller
 public class BoardController {
-
 	private BoardService boardService;
 
 	// 게시글 리스트
@@ -38,6 +37,12 @@ public class BoardController {
 		int total = boardService.getTotal(cri);
 		log.info("total" + total);
 		model.addAttribute("pageMaker", new PageVO(cri, total));
+	}
+
+	// Ajax를 이용한 게시글 리스트
+	@GetMapping("/board/ajaxList")
+	public void ajaxList(Model model) {
+		log.info("ajaxList()");
 	}
 
 	// 글작성 페이지

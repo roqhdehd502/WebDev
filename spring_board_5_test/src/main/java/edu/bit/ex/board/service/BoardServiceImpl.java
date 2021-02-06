@@ -61,6 +61,13 @@ public class BoardServiceImpl implements BoardService {
 		log.info("deleteBoard()");
 	}
 
+	// AJAX용 작성글 삭제
+	@Override
+	public int remove(int bId) {
+		log.info("remove..........");
+		return mapper.ajaxDelete(bId);
+	}
+
 	// 작성글 수정
 	@Override
 	public void modifyBoard(BoardVO boardVO) {

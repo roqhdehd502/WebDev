@@ -61,6 +61,13 @@
 	]]>
 	</delete>
 	
+	<!-- ajax 게시글 지우기 -->
+	<delete id="ajaxDelete">
+	<![CDATA[
+		delete from mvc_board where bId = #{bId}
+	]]>
+	</delete>
+	
 	<!--  게시글 수정 -->
 	<update id="modify">
 	<![CDATA[

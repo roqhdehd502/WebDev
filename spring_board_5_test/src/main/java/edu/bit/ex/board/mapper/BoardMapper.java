@@ -28,6 +28,9 @@ public interface BoardMapper {
 	// 작성글 삭제하기
 	public void delete(BoardVO boardVO);
 
+	// AJAX용 작성글 삭제하기
+	public int ajaxDelete(int bId);
+
 	// 작성글 수정하기
 	public void modify(BoardVO boardVO);
 
@@ -39,4 +42,5 @@ public interface BoardMapper {
 
 	// 답변글 형태 업데이트하기
 	public void replyShape(BoardVO boardVO);
+
 }
