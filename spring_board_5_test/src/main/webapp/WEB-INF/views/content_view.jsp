@@ -39,12 +39,12 @@ function getList() {
 	                    htmls += '<td>'+ this.bName + '</td>';
 	                    htmls += '<td>'
 	         			for(var i=0; i < this.bIndent; i++) {
-	         				htmls += '-'	
+	         				htmls += '[Re]'	
 	        			}
 	                    htmls += '<a href="${pageContext.request.contextPath}/restful/board/' + this.bId + '">' + this.bTitle + '</a></td>';
 		                htmls += '<td>'+ this.bDate + '</td>'; 
 	                    htmls += '<td>'+ this.bHit + '</td>';
-	                    htmls += '<td><a id="a-delete" href="${pageContext.request.contextPath}/restful/board/' + this.bId + '"  >삭제</a></td>'; //href="${pageContext.request.contextPath}/restful/board/' + this.bId + '"             
+	                    htmls += '<td><button id="a-delete">삭제</button></td>';             
 	                    htmls += '</tr>';			                    		                   
                 	});
 
@@ -83,39 +83,33 @@ function getList() {
 </script>
 </head>
 <body>
-	<form action="modify" method="post">
-		<table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">	
-			<input type="hidden" name="bId" value="${content_view.bId}">
+	<table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">	
 			<tr>
-				<td> 번호 </td>
-				<td> ${content_view.bId} </td>
+				<td>번호</td>
+				<td>${content_view.bId}</td>
 			</tr>
 			<tr>
-				<td> 조회수 </td>
-				<td> ${content_view.bHit} </td>
+				<td>조회수</td>
+				<td>${content_view.bHit}</td>
 			</tr>
 			<tr>
-				<td> 이름 </td>
-				<td> <input type="text" name="bName" value="${content_view.bName}"></td>
+				<td>이름</td>
+				<td>${content_view.bName}</td>
 			</tr>
 			<tr>
-				<td> 제목 </td>
-				<td> <input type="text" name="bTitle" value="${content_view.bTitle}"></td>
+				<td>제목</td>
+				<td>${content_view.bTitle}</td>
 			</tr>
 			<tr>
-				<td> 내용 </td>
-				<td> <textarea rows="10" name="bContent" >${content_view.bContent}</textarea></td>
+				<td>내용</td>
+				<td>${content_view.bContent}</td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="수정">&nbsp;&nbsp;
 					<a href="${pageContext.request.contextPath}/restful/board">목록보기</a>&nbsp;&nbsp;
 					<button class="a-delete">삭제</button>&nbsp;&nbsp;
-					<!--<a class="a-delete" href="${pageContext.request.contextPath}/restful/board/${content_view.bId}" >삭제</a>&nbsp;&nbsp;   -->
-					<a href="${pageContext.request.contextPath}/restful/board/reply_view/${content_view.bId}">답변</a>
 				</td>
 			</tr>
-		</table>
-	</form>
+	</table>
 </body>
 </html>

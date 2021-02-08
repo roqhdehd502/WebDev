@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -8,87 +10,87 @@
 	<title>Rest List</title>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		function getList() {
-			var url = "${pageContext.request.contextPath}/rest/after.json";
-
-			$.ajax({
-	            type: 'GET',
-	            url: url,
-	            cache : false,
-	            dataType: 'json',
-		        success: function(result) {
-					var htmls="";
-					
-		        	$("#list-table").html("");	
-
-					$("<tr>" , {
-						html : "<td>" + "번호" + "</td>"+
-							   "<td>" + "이름" + "</td>"+
-							   "<td>" + "제목" + "</td>"+
-							   "<td>" + "날짜" + "</td>"+				
-							   "<td>" + "조회수" + "</td>"+
-							   "<td>" + "삭제" + "</td>"
-					}).appendTo("#list-table")
-
-					if(result.length < 1){
-						htmls.push("등록된 댓글이 없습니다.");
-					} else {
-		                    $(result).each(function(){			                    			                    
-			                    htmls += '<tr>';
-			                    htmls += '<td>'+ this.bId + '</td>';
-			                    htmls += '<td>'+ this.bName + '</td>';
-			                    htmls += '<td>'
-			         			for(var i=0; i < this.bIndent; i++) {
-			         				htmls += '-'	
-			        			}
-			                    htmls += '<a href="${pageContext.request.contextPath}/restful/board/' + this.bId + '">' + this.bTitle + '</a></td>';
- 			                    htmls += '<td>'+ this.bDate + '</td>'; 
-			                    htmls += '<td>'+ this.bHit + '</td>';
-			                    
-			                    htmls += '<td><button class="a-delete" href="${pageContext.request.contextPath}/restful/board/' + this.bId + '">삭제</button></td>';
-			                    htmls += '</tr>';			                    		                   
-		                	});
-
-		                	htmls+='<tr>';
-		                	htmls+='<td colspan="6"><a href="${pageContext.request.contextPath}/restful/board/write_view">글작성</a></td>';		                	
-		                	htmls+='</tr>';		           	
-					}
-					$("#list-table").append(htmls);	
-		        }
-			});
-		}
-	</script>
 	
 	<script type="text/javascript">
-		$(document).ready(function (){
-			$("input[name='optionCheck']").change(function() {
-				getList();
-			})
+	$(document).ready(function (){
+		$('.a-delete').click(function(event){
+			// 이벤트를 취소할 때 동작을 멈춘다.
+			event.preventDefault();
+			console.log("ajax 호출전");
 			
-			$('.a-delete').click(function(event){
-				event.preventDefault();
-				window.alert("ajax 호출전");
-				console.log("ajax 호출전"); 
-				 
-				$.ajax({
-				    type : "DELETE",
-				    url : "${pageContext.request.contextPath}/restful/board/" + this.bId, //
-				    //data:{"bId":"${content_view.bId}"},
-				    success: function (result) {       
-				           console.log(result); 
-				           getList();               
-				    },
-				    error: function (e) {
-				        console.log(e);
-				    }
-				})	 
-			});
-		
+			// <a>의 parent(<td>)의 parent 즉, <tr>를 지칭한다.
+			/*
+				어떻게 제이쿼리는 this가 <a>인 것을 알고있을까?
+				: a 태그내 .a-delete 클릭 이벤트가 발생 되었으므로!
+				: $('.a-delete').click(function(event)
+			*/
+			var trObj = $(this).parent().parent(); 
+ 
+			$.ajax({
+				// AJAX의 타입(삭제)
+				type : 'DELETE',
+				
+				// <a>의(this) 속성(href)을 가져온다.(attr)
+				url : $(this).attr("href"),
+				
+				// 캐시를 false 설정하여 페이지가 새로 고쳐질때
+				// 데이터를 남기지 않는다(?)
+				cache : false,
+				
+				success: function(result){
+					console.log(result);
+					if(result=="SUCCESS"){
+						// trObj 변수를 삭제한다.(게시글 삭제)
+						$(trObj).remove();
+						console.log("REMOVED!")
+					}
+				},
+				error:function(e){
+					console.log(e);
+				}
+			})
 		});	
-	</script>
+	});	
+</script>
 </head>
 <body>
-	<table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1"></table>
+	<table width="500" cellpadding="0" cellspacing="0" border="1">
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>제목</th>
+			<th>날짜</th>
+			<th>조회수</th>
+			<th>삭제</th>
+		</tr>
+		
+		<c:forEach items="${list}" var="dto">
+        	<tr>
+            	<td>${dto.bId}</td>
+				<td>${dto.bName}</td>
+				<td>
+					<c:forEach begin="1" end="${dto.bIndent}">[Re]</c:forEach>
+					<a href="${pageContext.request.contextPath}/restful/board/${dto.bId}">${dto.bTitle}</a></td>
+				<td><fmt:formatDate value="${dto.bDate}" pattern="YYYY-MM-DD"/></td>
+				<td>${dto.bHit}</td>
+				<td><a class="a-delete" href="${pageContext.request.contextPath}/restful/board/${dto.bId}">삭제</a>
+
+</td>
+       	   </tr>
+       </c:forEach>  
+	   
+	   <tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>제목</th>
+			<th>날짜</th>
+			<th>조회수</th>
+			<th>삭제</th>
+	   </tr>
+	   
+	   <tr>
+			<td colspan="6"><a href="${pageContext.request.contextPath}/restful/write">글쓰기</a></th>
+	   </tr>	
+	</table>
 </body>
 </html>

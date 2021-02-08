@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 // REST: Representational State Tranfer
-// 하나의 URI가 하나의 고유한 리소스를 대표하도록 설계된 개념
+// 하나의 URI마다 고유한 리소스를 대표하도록 설계된 개념
 
 // http://localhost/spring02/list?bno=1 ==> url+파라미터
 // http://localhost/spring02/list/1 ==> url
@@ -45,7 +45,6 @@ public class RestBoardController {
 		log.info("rest_content_view");
 		mav.setViewName("content_view");
 		mav.addObject("content_view", boardService.getBoard(boardVO.getbId()));
-		// model.addAttribute("content_view", boardService.getBoard(boardVO.getbId()));
 		return mav;
 	}
 
