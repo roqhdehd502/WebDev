@@ -3,27 +3,30 @@
 <!DOCTYPE>
 <html>
 <head>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Content View</title>
-<script type="text/javascript">
-   $(document).ready(function(){
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Content View</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+   	$(document).ready(function(){
       $("#updateForm").submit(function(event){         
-         event.preventDefault();
-         
-           var name = $("#bName").val();
-           var bTitle = $("#bTitle").val();
-           var bContent = $("#bContent").val();           
+           event.preventDefault();     
            var bId = $("#bId").val();
+           var bName = $("#bName").val();
+           var bTitle = $("#bTitle").val();
+           var bContent = $("#bContent").val();              
            
+           console.log(bName);
+           console.log(bTitle);
            console.log(bContent);
            console.log($(this).attr("action"));    
            
            var form = {
                  bId: bId,
-                 bName: name,
-                   bContent: bContent,
-                   bTitle: bTitle
+                 bName: bName,
+                 bContent: bContent,
+                 bTitle: bTitle
            };
 
            $.ajax({
@@ -47,7 +50,7 @@
 </script>
 </head>
 <body>
-   <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
+   <table width="500" cellpadding="0" cellspacing="0" border="1">
       <form id="updateForm" action="${pageContext.request.contextPath}/restful/board/${content_view.bId}" method="post">
          <input type="hidden" id="bId" value="${content_view.bId}">
          <tr>
@@ -55,7 +58,7 @@
             <td> ${content_view.bId} </td>
          </tr>
          <tr>
-            <td> 히트 </td>
+            <td> 조회수 </td>
             <td> ${content_view.bHit} </td>
          </tr>
          <tr>
@@ -71,7 +74,12 @@
             <td> <textarea rows="10" id="bContent" >${content_view.bContent}</textarea></td>
          </tr>
          <tr >
-            <td colspan="2"> <input type="submit" value="수정"> &nbsp;&nbsp; <a href="list">목록보기</a> &nbsp;&nbsp; <a id="a-delete">삭제</a> &nbsp;&nbsp; <a href="reply_view?bId=${content_view.bId}">답변</a></td>
+            <td colspan="2">
+	            <input type="submit" value="수정">&nbsp;&nbsp;
+	            <a href="${pageContext.request.contextPath}/restful/board">목록보기</a>&nbsp;&nbsp;
+	            <a href="#">삭제</a>&nbsp;&nbsp;
+	            <a href="${pageContext.request.contextPath}/restful/board/reply/${content_view.bId}">답변</a>
+            </td>
          </tr>
       </form>
    </table>

@@ -43,7 +43,7 @@ public class LoginController {
 		if (user == null) {
 			session.setAttribute("user", null);
 			/*
-			 * Spring3 에서 제공하는 RedirectAttributes를 사용하면 redirect post 구현이 가능합니다. 하지만 일회성입니다. 새로고침하면 날라가는 데이터이므로 사용목적에 따라서 사용/불가능 판단을 잘 하셔야 할거 같습니다.
+			 * Spring3 에서 제공하는 RedirectAttributes를 사용하면 redirect post 구현이 가능하다. 하지만 일회성이라 새로고침하면 날라가는 데이터이므로 사용목적에 따라서 판단 후 사용한다.
 			 */
 			rttr.addFlashAttribute("msg", false);
 		} else {

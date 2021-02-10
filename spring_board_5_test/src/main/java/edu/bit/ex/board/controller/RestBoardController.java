@@ -86,4 +86,55 @@ public class RestBoardController {
 
 		return entity;
 	}
+
+	// 답변글 페이지
+	@GetMapping("/board/reply/{bId}")
+	public ModelAndView rest_reply_view(BoardVO boardVO, ModelAndView mav) {
+		log.info("rest_reply_view");
+		mav.setViewName("rest/reply_view");
+		mav.addObject("reply_view", boardService.getReply(boardVO.getbId()));
+		return mav;
+	}
+
+	// 작성글 답변
+	@PutMapping("/board/reply/{bId}")
+	public ResponseEntity<String> rest_reply(@RequestBody BoardVO boardVO, ModelAndView modelAndView) {
+		ResponseEntity<String> entity = null;
+
+		log.info("rest_reply..");
+		try {
+			boardService.replyBoard(boardVO);
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
+
+	// 답변글 페이지
+	@GetMapping("/board/write")
+	public ModelAndView rest_write_view(BoardVO boardVO, ModelAndView mav) {
+		log.info("rest_write_view");
+		mav.setViewName("rest/write_view");
+		return mav;
+	}
+
+	// 작성글 답변
+	@PutMapping("/board/write")
+	public ResponseEntity<String> write_view(@RequestBody BoardVO boardVO, ModelAndView modelAndView) {
+		ResponseEntity<String> entity = null;
+
+		log.info("write_view..");
+		try {
+			boardService.writeBoard(boardVO);
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+		return entity;
+	}
 }

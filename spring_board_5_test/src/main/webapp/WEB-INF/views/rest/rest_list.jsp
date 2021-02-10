@@ -62,8 +62,7 @@
 			<th>날짜</th>
 			<th>조회수</th>
 			<th>삭제</th>
-		</tr>
-		
+		</tr>	
 		<c:forEach items="${list}" var="dto">
         	<tr>
             	<td>${dto.bId}</td>
@@ -75,8 +74,7 @@
 				<td>${dto.bHit}</td>
 				<td><a class="a-delete" href="${pageContext.request.contextPath}/restful/board/${dto.bId}">삭제</a></td>		
        	   </tr>
-       </c:forEach>  
-	   
+       </c:forEach>  	   
 	   <tr>
 			<th>번호</th>
 			<th>이름</th>
@@ -84,10 +82,9 @@
 			<th>날짜</th>
 			<th>조회수</th>
 			<th>삭제</th>
-	   </tr>
-	   
+	   </tr>	
 	   <tr>
-			<td colspan="6"><a href="${pageContext.request.contextPath}/restful/write">글쓰기</a></th>
+			<td colspan="6"><a href="${pageContext.request.contextPath}/restful/board/write">글쓰기</a></th>
 	   </tr>	
 	</table>
 </body>
