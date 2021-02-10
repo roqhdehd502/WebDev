@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,7 +36,7 @@ public class RestBoardController {
 	// @Controller방식으로 접근 - view(화면)를 리턴
 	@GetMapping("/board")
 	public ModelAndView list(ModelAndView mav) {
-		mav.setViewName("rest_list");
+		mav.setViewName("rest/rest_list");
 		mav.addObject("list", boardService.getList());
 		return mav;
 	}
@@ -43,7 +45,7 @@ public class RestBoardController {
 	@GetMapping("/board/{bId}")
 	public ModelAndView rest_content_view(BoardVO boardVO, ModelAndView mav) {
 		log.info("rest_content_view");
-		mav.setViewName("content_view");
+		mav.setViewName("rest/content_view");
 		mav.addObject("content_view", boardService.getBoard(boardVO.getbId()));
 		return mav;
 	}
@@ -65,6 +67,23 @@ public class RestBoardController {
 			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 		// 삭제 처리 HTTP 상태 메시지 리턴
+		return entity;
+	}
+
+	// 작성글 수정
+	@PutMapping("/board/{bId}")
+	public ResponseEntity<String> rest_update(@RequestBody BoardVO boardVO, ModelAndView modelAndView) {
+		ResponseEntity<String> entity = null;
+
+		log.info("rest_update..");
+		try {
+			boardService.modifyBoard(boardVO);
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
 		return entity;
 	}
 }

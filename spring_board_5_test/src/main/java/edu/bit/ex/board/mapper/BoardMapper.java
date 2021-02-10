@@ -19,6 +19,8 @@ public interface BoardMapper {
 	// 글 작성하기
 	public void insert(BoardVO boardVO);
 
+	public void insertBoard(BoardVO boardVO);
+
 	// 작성글 불러오기
 	public BoardVO read(int bno);
 

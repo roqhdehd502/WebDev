@@ -18,7 +18,7 @@
 			event.preventDefault();
 			console.log("ajax 호출전");
 			
-			// <a>의 parent(<td>)의 parent 즉, <tr>를 지칭한다.
+			// <a>의 parent(<td>)의 parent 즉, <tr>를 지칭한다.(클로저)
 			/*
 				어떻게 제이쿼리는 this가 <a>인 것을 알고있을까?
 				: a 태그내 .a-delete 클릭 이벤트가 발생 되었으므로!
@@ -73,9 +73,7 @@
 					<a href="${pageContext.request.contextPath}/restful/board/${dto.bId}">${dto.bTitle}</a></td>
 				<td><fmt:formatDate value="${dto.bDate}" pattern="YYYY-MM-DD"/></td>
 				<td>${dto.bHit}</td>
-				<td><a class="a-delete" href="${pageContext.request.contextPath}/restful/board/${dto.bId}">삭제</a>
-
-</td>
+				<td><a class="a-delete" href="${pageContext.request.contextPath}/restful/board/${dto.bId}">삭제</a></td>		
        	   </tr>
        </c:forEach>  
 	   
