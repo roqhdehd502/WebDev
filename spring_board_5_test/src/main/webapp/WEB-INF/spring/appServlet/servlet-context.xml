@@ -29,17 +29,17 @@
 	<!-- context component -->
 	<context:component-scan base-package="edu.bit.ex.board.controller"/>
 	
-	<!-- 인터셉터 객체 생성 -->
+	<!-- 인터셉터 객체 생성
 	<beans:bean id="boardInterceptor" class="edu.bit.ex.board.interceptor.BoardInterceptor">
 	</beans:bean>
 	
-	<!-- Interceptor 설정 -->
+	Interceptor 설정
 	<interceptors>
 	    <interceptor>
-	        <mapping path="/board/list"/><!-- 인터셉터 검증이 완료되면 이동할 페이지 매핑 -->         
+	        <mapping path="/board/list"/>인터셉터 검증이 완료되면 이동할 페이지 매핑         
 	        <exclude-mapping path="/resources/**"/>
 	        <beans:ref bean="boardInterceptor"/>
 	    </interceptor>
-	</interceptors>
+	</interceptors> -->
 		
 </beans:beans>

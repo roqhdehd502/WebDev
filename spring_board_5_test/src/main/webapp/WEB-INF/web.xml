@@ -6,7 +6,10 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value> <!-- 여러개를 읽고자 할 때는 반드시 하나에서 처리한다. -->
+			/WEB-INF/spring/root-context.xml <!-- 루트 컨텍스트 읽기 -->
+			/WEB-INF/spring/aop-context.xml <!-- AOP 컨텍스트 읽기 -->
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+      http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+   
+   <!-- AOP 객체에 어노테이션을 적용시키기 위해선 autoproxy 기능이 필요하다. -->
+   <!-- XML 위주의 AOP 구현을 하고자 한다면 이 기능을 주석처리한다. -->
+   <!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+      
+   <bean id="logAdvice" class="edu.bit.ex.board.aop.LogAdvice" />
+   <bean id="logAop" class="edu.bit.ex.board.aop.LogAop" />
+   <!-- <bean id="logAdvice" class="edu.bit.ex.board.aop.LogAdvice2" />
+   <bean id="logAop" class="edu.bit.ex.board.aop.LogAop2" />	 -->
+<!-- 
+      Aspect : 공통기능이 들어 있는 클래스(예제, 로깅... 트랜잭션 ...)
+      Advice : Aspect 클래스에 들어 있는 공통기능(한마디로 Aspcect 안의 함수)
+      JointPoint : advice 함수가 적용되는 함수
+      PointCut : Jointpoint의 부분으로 실제로 적용되는 함수내의 지점
+      weaving : Advice를 적용하는 행위 
+-->   
+<!--    AOP설정    -->
+<!-- AutoProxy 기능을 활성화하려면 해당 부분들을 주석처리한다. -->
+   <aop:config>
+      <aop:aspect ref="logAdvice">
+         <aop:pointcut id="publicM" expression="within(edu.bit.ex.board.service.*)"/>
+         <!--<aop:around pointcut-ref="publicM" method="loggerAop" />--> <!-- 에러 원인이니까 주석처리 --> 
+         <aop:before pointcut-ref="publicM" method="printLogging" />
+      </aop:aspect>
+   </aop:config>
+   
+   <aop:config>
+      <!-- aspect id는 logger이고, logAop를 참조함 -->
+      <aop:aspect  ref="logAop">
+         <!-- pointcut(핵심 기능)의 id는 publicM이고, 해당 패키지에 있는 모든 클래스에 공통 기능을 적용 -->
+         <aop:pointcut id="publicM" expression="within(edu.bit.ex.board.service.*)"/>
+         <!-- loggerAop()라는 공통 기능을 publicM라는 pointcut에 적용 -->
+         <aop:around pointcut-ref="publicM" method="loggerAop" />          
+      </aop:aspect>
+   </aop:config>
+          
+</beans>
