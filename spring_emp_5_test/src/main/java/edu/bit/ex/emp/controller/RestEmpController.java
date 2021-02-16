@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.bit.ex.emp.service.EmpService;
+import edu.bit.ex.emp.vo.EmpVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -20,6 +21,13 @@ public class RestEmpController {
 	public ModelAndView list(ModelAndView mav) {
 		mav.setViewName("rest/emp_list");
 		mav.addObject("list", empService.getList());
+		return mav;
+	}
+
+	@GetMapping("/emp/{deptno}")
+	public ModelAndView list_deptno(EmpVO empVO, ModelAndView mav) {
+		mav.setViewName("rest/emp_list");
+		mav.addObject("list", empService.getListDeptno(empVO.getDeptno()));
 		return mav;
 	}
 }

@@ -9,6 +9,9 @@ public interface EmpMapper {
 	// 직원 정보 불러오기
 	public List<EmpVO> getList();
 
+	// 부서별 직원 정보 불러오기
+	public List<EmpVO> getListDeptno(int deptno);
+
 	// 페이징을 적용한 직원 정보 불러오기
 	public List<EmpVO> getListWithPaging(Criteria criteria);
 
@@ -31,4 +34,5 @@ public interface EmpMapper {
 
 	// 직원 정보 수정하기(더미 데이터)
 	public void modify(EmpVO empVO);
+
 }

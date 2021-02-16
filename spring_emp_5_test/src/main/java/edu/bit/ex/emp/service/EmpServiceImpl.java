@@ -24,6 +24,13 @@ public class EmpServiceImpl implements EmpService {
 		return mapper.getList();
 	}
 
+	// 부서별 직원 정보 리스트
+	@Override
+	public List<EmpVO> getListDeptno(int deptno) {
+		log.info("getList()");
+		return mapper.getListDeptno(deptno);
+	}
+
 	// 페이징을 적용한 직원 정보 리스트
 	@Override
 	public List<EmpVO> getList(Criteria criteria) {

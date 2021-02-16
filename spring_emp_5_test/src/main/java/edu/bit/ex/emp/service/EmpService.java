@@ -9,6 +9,9 @@ public interface EmpService {
 	// 직원정보 리스트
 	public List<EmpVO> getList();
 
+	// 부서별 직원정보 리스트
+	public List<EmpVO> getListDeptno(int deptno);
+
 	// 페이징을 적용한 직원정보 리스트
 	public List<EmpVO> getList(Criteria criteria);
 
@@ -25,4 +28,5 @@ public interface EmpService {
 
 	// 직원 정보 작성하기
 	public void writeEmp(EmpVO empVO);
+
 }
