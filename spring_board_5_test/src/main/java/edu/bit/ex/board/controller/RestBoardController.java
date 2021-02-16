@@ -121,7 +121,7 @@ public class RestBoardController {
 		return mav;
 	}
 
-	// 작성글 답변
+	// 글 작성
 	@PutMapping("/board/write")
 	public ResponseEntity<String> write_view(@RequestBody BoardVO boardVO, ModelAndView modelAndView) {
 		ResponseEntity<String> entity = null;
