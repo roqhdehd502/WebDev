@@ -29,7 +29,7 @@
 
 # Spring 교육기간
 
-<a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_11_MVCBoard">2021.01.18 ~ 2021.01.29</a><br>
+<a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_11_MVCBoard">2021.01.18 ~ 2021.02.28</a><br>
 <a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_board_5_test">게시판</a><br>
 <a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_emp_5_test">직원리스트</a><br>
 <a href = "https://github.com/roqhdehd502/WebDev/tree/main/spring_Security">스프링 시큐리티</a>
