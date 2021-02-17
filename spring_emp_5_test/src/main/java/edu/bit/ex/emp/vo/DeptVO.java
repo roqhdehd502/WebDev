@@ -14,7 +14,8 @@ public class DeptVO {
 	private int deptno; // 부서번호
 	private String dname; // 부서명
 	private String loc; // 부서위치
-	private List<EmpVO> empVO; // 직원 테이블 참조
+
+	private List<EmpVO> empVO; // 직원 테이블 참조(1 : N의 관계)
 
 	public DeptVO() {
 		super();

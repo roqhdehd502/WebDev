@@ -7,15 +7,29 @@
       http://www.springframework.org/schema/beans 
       http://www.springframework.org/schema/beans/spring-beans.xsd">
    
-   <!-- 해당 프로토콜의 로그인 form 태그 감지 -->
-   <http> 
+   <!-- 해당 프로토콜의 로그인 감지 -->
+   <http>
+   	  <!-- 모든 권한 부여 --> 
+      <intercept-url pattern="/security/all" access="permitAll" />
+      <!-- user-service의 authorities에 지정된 ROLE MEMBER에 따라 권한 부여 -->
+      <intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" />   
+      <intercept-url pattern="/security/admin" access="hasRole('ROLE_ADMIN')" />
       <form-login />
    </http> 
    
    <!-- 인증 매니저 -->
    <!-- provider --> 
    <authentication-manager>
-
-   </authentication-manager> 
+      <authentication-provider>
+      	 <!-- user를 통해 이용자의 정보를 입력 --> 
+         <user-service>
+         	<!-- id와 pw가 member인 계정에게 ROLE_MEMBER를 부여한다 -->   	
+         	<!-- {noop}을 통해 패스워드 인코딩 과정을 거친다 --> 
+            <user name="member" password="{noop}member" authorities="ROLE_MEMBER" />
+            <!-- id와 pw가 admin인 계정에게 ROLE_MEMBER와 ROLE_ADMIN을 부여한다 --> 
+         	<user name="admin" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN" />
+         </user-service> 
+      </authentication-provider>
+   </authentication-manager>
     
 </beans:beans>

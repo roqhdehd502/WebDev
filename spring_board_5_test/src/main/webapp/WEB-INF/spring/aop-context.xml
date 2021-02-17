@@ -29,7 +29,6 @@
    <aop:config>
       <aop:aspect ref="logAdvice">
          <aop:pointcut id="publicM" expression="within(edu.bit.ex.board.service.*)"/>
-         <!--<aop:around pointcut-ref="publicM" method="loggerAop" />--> <!-- 에러 원인이니까 주석처리 --> 
          <aop:before pointcut-ref="publicM" method="printLogging" />
       </aop:aspect>
    </aop:config>
