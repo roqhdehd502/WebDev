@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+   xmlns:beans="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/security 
+      http://www.springframework.org/schema/security/spring-security.xsd 
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+   
+   <!-- 해당 프로토콜의 로그인 감지 -->
+   <http auto-config="true" use-expressions="true">
+      <!-- 권한의 패턴을 가장 구체적인 것부터 폭넓은 순으로 코드 배치할것 -->
+   	  <!-- 모든 권한 부여 --> 
+      <intercept-url pattern="/login/loginForm" access="permitAll" />
+      <intercept-url pattern="/" access="permitAll" />
+      <!-- jdbc-user-service의 authorities-by-username-query에 지정된 데이터에 따라 권한 부여 -->
+      <intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+      <intercept-url pattern="/**" access="hasAnyRole('USER, ADMIN')" />
+      
+      <!-- 로그인 폼 구현 -->
+      <!-- form-login 태그로 기초적인 형태가 구축되고 속성값에 의해 커스터마이징 할 수 있다 -->
+      <form-login login-page="/login/loginForm"
+                    default-target-url="/"
+                    authentication-failure-url="/login/loginForm?error"
+                    username-parameter="id" 
+                    password-parameter="password" />
+      <!-- 로그아웃 폼 구현 -->
+      <logout logout-url="/logout" logout-success-url="/" /> 
+     
+      <!-- 403(접근 거부) 에러 처리 -->
+      <!-- 인증값과 권한값이 매칭이 안될경우 발생시킨다 -->
+      <access-denied-handler error-page="/login/accessDenied"/>
+   </http> 
+   
+   <!-- JDBC에 의해 DB를 설정한다 -->
+   <beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+        <beans:property name="dataSource" ref="dataSource"/>
+   </beans:bean>
+   
+   <!-- 암호화 인코딩 객체 설정 -->
+   <beans:bean id="customNoOpPasswordEncoder" class="edu.bit.ex.security.CustomNoOpPasswordEncoder"/>
+   
+   <!-- provider -->
+   <!-- DB에서 설정한 쿼리문으로 필요한 데이터들을 불러온다 --> 
+   <authentication-manager>
+      <authentication-provider>
+      	 <!-- 패스워드 인코딩을 설정한다 -->
+      	 <password-encoder ref="customNoOpPasswordEncoder"/>
+         <!-- DB에 저장된 회원 정보와 사전에 정의했던 레벨별 권한을 가져온다 -->
+         <!-- data-source-ref 속성값에 의해 디폴트 쿼리를 불러오거나 -->
+         <!-- users-by-username-query, authorities-by-username-query로 정의된 쿼리를 불러올 수 있다 -->
+         <jdbc-user-service 
+               data-source-ref="dataSource"
+               role-prefix=""
+               users-by-username-query="select username, password, enabled from users where username = ?"
+               authorities-by-username-query="select username, authority from authorities where username = ?"
+         />
+         <!-- <jdbc-user-service 
+               data-source-ref="dataSource"
+         />   -->
+      </authentication-provider>
+   </authentication-manager>
+</beans:beans>

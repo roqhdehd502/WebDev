@@ -14,7 +14,21 @@
       <!-- user-service의 authorities에 지정된 ROLE MEMBER에 따라 권한 부여 -->
       <intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" />   
       <intercept-url pattern="/security/admin" access="hasRole('ROLE_ADMIN')" />
-      <form-login />
+      
+      <!-- 로그인 폼 구현 -->
+      <!-- form-login 태그로 기초적인 형태가 구축되고 속성값에 의해 커스터마이징 할 수 있다 -->
+      <!-- username-parameter: id에 대응되는 값 -->
+      <form-login login-page="/login/loginForm"
+                    default-target-url="/"
+                    authentication-failure-url="/login/loginForm?error"
+                    username-parameter="id" 
+                    password-parameter="password" />
+      <!-- 로그아웃 폼 구현 -->
+      <logout logout-url="/logout" logout-success-url="/" /> 
+     
+      <!-- 403(접근 거부) 에러 처리 -->
+      <!-- 인증값과 권한값이 매칭이 안될경우 발생시킨다 -->
+      <access-denied-handler error-page="/security/accessError"/>
    </http> 
    
    <!-- 인증 매니저 -->
