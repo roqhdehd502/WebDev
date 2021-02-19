@@ -13,11 +13,9 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Controller
 public class HomeController {
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		log.info("Welcome home! The client locale is {}.");
-
 		return "home";
 	}
 

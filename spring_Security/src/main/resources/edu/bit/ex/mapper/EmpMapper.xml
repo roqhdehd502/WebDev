@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.bit.ex.mapper.EmpMapper">
+	<resultMap id="empMap" type="edu.bit.ex.vo.EmpVO">
+	    <result property="ename" column="ename"/>
+	    <result property="empno" column="empno"/>
+	    <result property="hiredate" column="hiredate"/> 
+	    <result property="mgr" column="mgr"/> 
+	    <result property="sal" column="sal"/>
+	    <result property="comm" column="comm"/>   
+	    <result property="deptno" column="deptno"/> 
+	    <result property="authority" column="authority"/>
+	    <collection property="authList" resultMap="authMap"></collection>
+	</resultMap>
+	
+	<resultMap id="authMap" type="edu.bit.ex.vo.AuthVO">
+		<result property="username" column="ename"/>
+		<result property="authority" column="authority"/>
+	</resultMap>
+	
+	<select id="getEmp" resultMap="empMap">
+		SELECT empno, ename, mgr, hiredate, sal, comm, deptno, CASE WHEN job = 'MANAGER' THEN 'ROLE_ADMIN' ELSE 'ROLE_USER' END authority 
+		FROM emp01 
+		WHERE ename = #{ename}
+	</select>
+</mapper>

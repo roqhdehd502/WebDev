@@ -12,8 +12,7 @@
       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
    
    <!-- Root Context: defines shared resources visible to all other web components -->
-   <!-- Root Context: defines shared resources visible to all other web components -->
-   
+  
    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
       <property name="driverClassName"
          value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
@@ -44,4 +43,7 @@
    </bean>
     
    <tx:annotation-driven transaction-manager="transactionManager" />
+   
+   <!--  Mapper Interface -->
+   <mybatis-spring:scan base-package="edu.bit.ex.mapper" />		
 </beans>

@@ -29,45 +29,23 @@
       <!-- 403(접근 거부) 에러 처리 -->
       <!-- 인증값과 권한값이 매칭이 안될경우 발생시킨다 -->
       <access-denied-handler error-page="/login/accessDenied"/>
-   </http> 
-   
-   <!-- 스프링 시큐리티에 의해 UserDetailsService 인터페이스를 가져온다 -->
-   <beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
-        <beans:property name="dataSource" ref="dataSource"/>
-   </beans:bean>
+   </http>
    
    <!-- 암호화 인코딩 객체 설정 -->
    <!-- <beans:bean id="customNoOpPasswordEncoder" class="edu.bit.ex.security.CustomNoOpPasswordEncoder"/> -->
    <beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
    
+   <!-- DetailsService 설정  -->
+   <beans:bean id="memberDetailsService" class="edu.bit.ex.security.MemberDetailsService" />
+   <!-- <beans:bean id="memberDetailsService" class="edu.bit.ex.security.EmpDetailsService" /> -->
+   
    <!-- provider -->
    <!-- DB에서 설정한 쿼리문으로 필요한 데이터들을 불러온다 --> 
    <authentication-manager>
-      <authentication-provider>
+      <authentication-provider user-service-ref="memberDetailsService">
       	 <!-- 패스워드 인코딩을 설정한다 -->
       	 <!-- bcrypt는 단방향 인코딩이므로 디코딩을 할 수 없어서 암호화한채로 계정을 비교한다 -->
-      	 <password-encoder ref="bcryptPasswordEncoder"/>
-         <!-- DB에 저장된 회원 정보와 사전에 정의했던 레벨별 권한을 가져온다 -->
-         <!-- data-source-ref 속성값에 의해 디폴트 쿼리를 불러오거나 -->
-         <!-- users-by-username-query, authorities-by-username-query로 정의된 쿼리를 불러올 수 있다 -->
-         <jdbc-user-service 
-               data-source-ref="dataSource"
-               role-prefix=""
-               users-by-username-query="select username, password, enabled from users where username = ?"
-               authorities-by-username-query="select username, authority from authorities where username = ?"
-         />
+      	 <password-encoder ref="bcryptPasswordEncoder"/>  
       </authentication-provider>
    </authentication-manager>
-   <!-- Emp 테이블의 정보를 가져와서 로그인 정보 조회하기
-	<authentication-manager>
-		<authentication-provider>
-			<password-encoder ref="customNoOpPasswordEncoder" />
-			<jdbc-user-service 
-				data-source-ref="dataSource" 
-				role-prefix=""
-				users-by-username-query="select ename, empno, 1 from emp01 where ename = ?"
-				authorities-by-username-query="select ename, CASE WHEN job = 'MANAGER' THEN 'ROLE_ADMIN' ELSE 'ROLE_USER' END authorities FROM emp01 WHERE ename = ?" />
-		</authentication-provider>
-	</authentication-manager>
-	-->
 </beans:beans>
