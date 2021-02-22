@@ -1,126 +1,100 @@
 package edu.bit.ex.board.service;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.HashMap;
-
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.Gson;
+
+import edu.bit.ex.board.vo.kakao.KakaoAuth;
+import edu.bit.ex.board.vo.kakao.KakaoProfile;
 
 @Service
-public class KakaoServiceImpl implements KakaoService {
-	@Override
-	public String getAccessToken(String authorize_code) {
-		String access_Token = "";
-		String refresh_Token = "";
-		String reqURL = "https://kauth.kakao.com/oauth/token";
+public class KakaoServiceImpl {
 
-		try {
-			URL url = new URL(reqURL);
+	private final static String K_CLIENT_ID = "55fbae94ad6baea8cd340f1850c2a6fe";
+	private final static String K_REDIRECT_URI = "http://localhost:8282/board/auth/kakao/callback";
 
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
-			// POST 요청을 위해 기본값이 false인 setDoOutput을 true로
-
-			conn.setRequestMethod("POST");
-			conn.setDoOutput(true);
-
-			// POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
-			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-			StringBuilder sb = new StringBuilder();
-			sb.append("grant_type=authorization_code");
-			sb.append("&client_id=55fbae94ad6baea8cd340f1850c2a6fe"); // 본인이 발급받은 key
-			sb.append("&redirect_uri=http://localhost:8282/ex/kakao_login"); // 본인이 설정해 놓은 경로
-			sb.append("&code=" + authorize_code);
-			bw.write(sb.toString());
-			bw.flush();
-
-			// 결과 코드가 200이라면 성공
-			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
-
-			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			String line = "";
-			String result = "";
-
-			while ((line = br.readLine()) != null) {
-				result += line;
-			}
-			System.out.println("response body : " + result);
-
-			// GSON 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
-			JsonParser parser = new JsonParser();
-			JsonElement element = parser.parse(result);
-
-			access_Token = element.getAsJsonObject().get("access_token").getAsString();
-			refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-
-			System.out.println("access_token : " + access_Token);
-			System.out.println("refresh_token : " + refresh_Token);
-
-			br.close();
-			bw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return access_Token;
+	public String getAuthorizationUrl() {
+		String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?" + "client_id=" + K_CLIENT_ID + "&redirect_uri=" + K_REDIRECT_URI
+				+ "&response_type=code";
+		return kakaoUrl;
 	}
 
-	@Override
-	public HashMap<String, Object> getUserInfo(String access_Token) {
+	private final static String K_TOKEN_URI = "https://kauth.kakao.com/oauth/token";
 
-		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
-		HashMap<String, Object> userInfo = new HashMap<>();
-		String reqURL = "https://kapi.kakao.com/v2/user/me";
-		try {
-			URL url = new URL(reqURL);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
+	// https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#request-token
+	// public RetKakaoAuth getKakaoTokenInfo(String code) {
+	public KakaoAuth getKakaoTokenInfo(String code) {
 
-			// 요청에 필요한 Header에 포함될 내용
-			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+		RestTemplate restTemplate = new RestTemplate();// http ��û�� �����ϰ� ���� �� �ִ� Ŭ����
+		// Set header : Content-type: application/x-www-form-urlencoded
+		HttpHeaders headers = new HttpHeaders();
+		// headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		// Set parameter
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("grant_type", "authorization_code");
+		params.add("client_id", K_CLIENT_ID);
+		params.add("redirect_uri", K_REDIRECT_URI);
+		params.add("code", code);
 
-			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
+		// Set http entity
+		HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		// ������ ��û�ϱ�
+		// Http ��û�ϱ� - POST ������� - �׸��� response ������ ������ ����.
+		ResponseEntity<String> response = restTemplate.postForEntity(K_TOKEN_URI, kakaoTokenRequest, String.class);
 
-			String line = "";
-			String result = "";
+		System.out.println(response.getBody());
+		System.out.println(response.getStatusCodeValue());
 
-			while ((line = br.readLine()) != null) {
-				result += line;
-			}
-			System.out.println("response body : " + result);
-
-			JsonParser parser = new JsonParser();
-			JsonElement element = parser.parse(result);
-
-			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-
-			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-			String profile_image = properties.getAsJsonObject().get("profile_image").getAsString();
-			String email = kakao_account.getAsJsonObject().get("email").getAsString();
-
-			userInfo.put("nickname", nickname);
-			userInfo.put("profile_image", profile_image);
-			userInfo.put("email", email);
-
-		} catch (IOException e) {
-			e.printStackTrace();
+		Gson gson = new Gson();
+		// Gson ,Json Simple, ObjectMapper ������ ������ Ŭ������ ����
+		if (response.getStatusCode() == HttpStatus.OK) {
+			return gson.fromJson(response.getBody(), KakaoAuth.class);
 		}
 
-		return userInfo;
+		return null;
+
 	}
+
+	private final static String K_PROFILE_URI = "https://kapi.kakao.com/v2/user/me";
+
+	// �������� �ޱ�(��ū�� �޾����� �ش� ��ū���� ���ҽ� ����)
+	// https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#req-user-info
+	public KakaoProfile getKakaoProfile(String accessToken) {
+
+		RestTemplate restTemplate = new RestTemplate();// http ��û�� �����ϰ� ���� �� �ִ� Ŭ����
+
+		// Set header : Content-type: application/x-www-form-urlencoded
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+		headers.set("Authorization", "Bearer " + accessToken);
+
+		// Set http entity
+		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(null, headers);
+		Gson gson = new Gson();
+		try {
+			// Request profile
+			ResponseEntity<String> response = restTemplate.postForEntity(K_PROFILE_URI, request, String.class);
+
+			if (response.getStatusCode() == HttpStatus.OK)
+				System.out.println(response.getBody());
+			KakaoProfile profile = gson.fromJson(response.getBody(), KakaoProfile.class);
+			System.out.println(profile);
+			return profile;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

@@ -39,6 +39,8 @@
 	              Remember me
 	              </label>
 	          </div>
+	          	  <!-- form:form JSTL 태그 미사용시 적용  -->
+	          	  <!-- csrf를 통한 32비트 번호를 별도로 보내 한 번 더 비교검증 유도 -->			  
 <%-- 	          <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/> --%>
 	          <button type="submit" class="btn btn-primary">Sign in</button>
 	   </form:form>

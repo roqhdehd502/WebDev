@@ -1,0 +1,16 @@
+Json 파서 사이트
+http://json.parser.online.fr/
+
+참고 사이트
+https://www.youtube.com/watch?v=WACDTFroYNI
+
+http://www.jsonschema2pojo.org/
+
+{"id":1624953263,"connected_at":"2021-02-10T16:17:30Z","properties":{"nickname":"Tom","profile_image":"http://k.kakaocdn.net/dn/dtMi57/btqz3o6ZxhT/9RtEYgORlhXSyRBo7cNKj0/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/dtMi57/btqz3o6ZxhT/9RtEYgORlhXSyRBo7cNKj0/img_110x110.jpg"},"kakao_account":{"profile_needs_agreement":false,"profile":{"nickname":"Tom","thumbnail_image_url":"http://k.kakaocdn.net/dn/dtMi57/btqz3o6ZxhT/9RtEYgORlhXSyRBo7cNKj0/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/dtMi57/btqz3o6ZxhT/9RtEYgORlhXSyRBo7cNKj0/img_640x640.jpg"}}}
+
+전체 방향
+1.인증 코드 받기
+2.권한코드 받기
+3.코드 받은후 프로파일 받기
+4.DB에 해당 유저가 존재 하는지 체크(kakaoid, nerverid 컬럼을 추가)
+5.존재시 강제 로그인, 미존재시 가입페이지로! 또는 강제 가입

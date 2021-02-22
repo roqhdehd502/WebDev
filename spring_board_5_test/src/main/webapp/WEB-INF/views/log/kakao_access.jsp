@@ -12,6 +12,6 @@
 	<p>환영합니다.</p>
 
 	<a href="${pageContext.request.contextPath}/board/list">게시판 리스트</a><br>
-	<a href="${pageContext.request.contextPath}">로그아웃</a>
+	<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
 </body>
 </html>

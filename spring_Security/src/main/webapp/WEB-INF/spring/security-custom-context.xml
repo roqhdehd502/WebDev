@@ -16,6 +16,9 @@
       <intercept-url pattern="/user/**" access="permitAll" />
 	  <intercept-url pattern="/**" access="hasAnyRole('USER, ADMIN')" />
       
+      <!-- csrf 토크 구현 -->
+      <csrf disabled="false"/>
+      
       <!-- 로그인 폼 구현 -->
       <!-- form-login 태그로 기초적인 형태가 구축되고 속성값에 의해 커스터마이징 할 수 있다 -->
       <form-login login-page="/login/loginForm"

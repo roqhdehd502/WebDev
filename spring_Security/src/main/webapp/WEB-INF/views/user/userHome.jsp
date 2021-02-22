@@ -23,5 +23,7 @@
 	<p>사용자월급: <sec:authentication property="principal.emp.sal"/></p>
 	<p>사용자입사일자: <sec:authentication property="principal.emp.hiredate"/></p>
 	<p><a href="<c:url value="/" />">홈</a></p>
+	
+
 </body>
 </html>
