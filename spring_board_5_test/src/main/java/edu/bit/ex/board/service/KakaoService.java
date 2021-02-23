@@ -16,10 +16,10 @@ import edu.bit.ex.board.vo.kakao.KakaoAuth;
 import edu.bit.ex.board.vo.kakao.KakaoProfile;
 
 @Service
-public class KakaoServiceImpl {
+public class KakaoService {
 
 	private final static String K_CLIENT_ID = "55fbae94ad6baea8cd340f1850c2a6fe";
-	private final static String K_REDIRECT_URI = "http://localhost:8282/board/auth/kakao/callback";
+	private final static String K_REDIRECT_URI = "http://localhost:8282/ex/auth/kakao/callback";
 
 	public String getAuthorizationUrl() {
 		String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?" + "client_id=" + K_CLIENT_ID + "&redirect_uri=" + K_REDIRECT_URI
@@ -96,5 +96,4 @@ public class KakaoServiceImpl {
 		}
 		return null;
 	}
-
 }

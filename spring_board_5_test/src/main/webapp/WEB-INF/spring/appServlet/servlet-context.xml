@@ -22,6 +22,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
+	<beans:bean id="naverLoginBO" class="edu.bit.ex.board.service.NaverLoginBO" />
+	
 	<!-- static resource treatment -->
 	<mvc:resources mapping="/resources/**" location="/resources/mytheme/" />
 	<mvc:annotation-driven />
