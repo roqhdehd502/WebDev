@@ -1,4 +1,4 @@
-package edu.bit.ex;
+package edu.bit.ex.controller;
 
 import java.security.Principal;
 

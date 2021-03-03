@@ -16,7 +16,7 @@
       <intercept-url pattern="/user/**" access="permitAll" />
 	  <intercept-url pattern="/**" access="hasAnyRole('USER, ADMIN')" />
       
-      <!-- csrf 토크 구현 -->
+      <!-- csrf 토큰 구현 -->
       <csrf disabled="false"/>
       
       <!-- 로그인 폼 구현 -->

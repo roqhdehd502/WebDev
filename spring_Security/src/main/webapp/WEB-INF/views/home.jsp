@@ -18,9 +18,9 @@
 	
 	<sec:authorize access="isAuthenticated()">
 	   <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+	       <button type="button" onclick="location.href='${pageContext.request.contextPath}/restful/board'">게시판</button>	
 	       <input type="submit" value="로그아웃" />
 	   </form:form>
-	   <p><a href="<c:url value="/loginInfo" />">로그인 정보 확인 방법3 가지</a></p>
 	</sec:authorize>
 	
 	<h3>

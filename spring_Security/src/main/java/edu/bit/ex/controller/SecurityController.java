@@ -1,4 +1,4 @@
-package edu.bit.ex;
+package edu.bit.ex.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
