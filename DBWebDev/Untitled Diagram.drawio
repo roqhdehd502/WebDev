@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-03-09T09:07:39.108Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="dXhZeFulRe5x8MgxVa0P" version="14.4.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-09T09:12:14.015Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="oOcl5TqQh0cHOlF-EJW9" version="14.4.4" type="github">
   <diagram id="5jZouDEvCZgjOH0xdtIj" name="ShoppingDB">
-    <mxGraphModel dx="2146" dy="863" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
+    <mxGraphModel dx="1767" dy="711" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -220,10 +220,10 @@
             <mxPoint x="-500" y="570" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="qSdD64xds7EIBNJ_DFiW-169" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="qSdD64xds7EIBNJ_DFiW-35" target="qSdD64xds7EIBNJ_DFiW-166" edge="1">
+        <mxCell id="qSdD64xds7EIBNJ_DFiW-169" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="qSdD64xds7EIBNJ_DFiW-35" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-840" y="580" as="sourcePoint" />
-            <mxPoint x="-790" y="580" as="targetPoint" />
+            <mxPoint x="1550" y="420" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="qSdD64xds7EIBNJ_DFiW-170" value="리뷰 관리" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -1668,6 +1668,9 @@
             <mxPoint x="2814" y="1120" as="sourcePoint" />
             <mxPoint x="2724" y="1050" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="EKECI2tfMOPUBE7Pj9Yp-1" value="댓글 작성" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1530" y="310" width="80" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
