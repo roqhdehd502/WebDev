@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-03-09T02:58:25.275Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="cEM4QPNauGa2wWZQqZDA" version="14.4.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-09T09:07:39.108Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="dXhZeFulRe5x8MgxVa0P" version="14.4.4" type="github">
   <diagram id="5jZouDEvCZgjOH0xdtIj" name="ShoppingDB">
-    <mxGraphModel dx="593" dy="313" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
+    <mxGraphModel dx="2146" dy="863" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -290,25 +290,22 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="qSdD64xds7EIBNJ_DFiW-190" value="상품번호" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="386" y="150" width="60" height="40" as="geometry" />
+          <mxGeometry x="416" y="150" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qSdD64xds7EIBNJ_DFiW-191" value="상품명" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="446" y="150" width="60" height="40" as="geometry" />
+          <mxGeometry x="476" y="150" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qSdD64xds7EIBNJ_DFiW-192" value="상품가격" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="506" y="150" width="60" height="40" as="geometry" />
+          <mxGeometry x="536" y="150" width="60" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="qSdD64xds7EIBNJ_DFiW-193" value="상품&lt;br&gt;사이즈" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="566" y="150" width="60" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="qSdD64xds7EIBNJ_DFiW-194" value="상품색상" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="626" y="150" width="60" height="40" as="geometry" />
+        <mxCell id="qSdD64xds7EIBNJ_DFiW-193" value="상품옵션" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="596" y="150" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qSdD64xds7EIBNJ_DFiW-195" value="상품분류" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="686" y="150" width="60" height="40" as="geometry" />
+          <mxGeometry x="656" y="150" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qSdD64xds7EIBNJ_DFiW-197" value="상품재고" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="746" y="150" width="60" height="40" as="geometry" />
+          <mxGeometry x="716" y="150" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qSdD64xds7EIBNJ_DFiW-199" value="업체&lt;br&gt;번호" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1056" y="240" width="60" height="40" as="geometry" />
@@ -434,7 +431,7 @@
           <mxGeometry x="596" y="640" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qSdD64xds7EIBNJ_DFiW-240" value="&lt;u&gt;업체번호&lt;/u&gt;" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="326" y="150" width="60" height="40" as="geometry" />
+          <mxGeometry x="356" y="150" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="qSdD64xds7EIBNJ_DFiW-245" value="" style="endArrow=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="qSdD64xds7EIBNJ_DFiW-237" target="qSdD64xds7EIBNJ_DFiW-223" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -587,12 +584,6 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="576" y="280" as="sourcePoint" />
             <mxPoint x="426" y="200" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="qSdD64xds7EIBNJ_DFiW-287" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="qSdD64xds7EIBNJ_DFiW-3" target="qSdD64xds7EIBNJ_DFiW-194" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="576" y="280" as="sourcePoint" />
-            <mxPoint x="366" y="200" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="qSdD64xds7EIBNJ_DFiW-288" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="qSdD64xds7EIBNJ_DFiW-3" target="qSdD64xds7EIBNJ_DFiW-195" edge="1">
