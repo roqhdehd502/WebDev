@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-03-10T10:56:49.271Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="3aIdhC_ObG27_0kdwXiX" version="14.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-10T10:59:40.041Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="qHnh2jeHXgP06UXoHcUb" version="14.4.6" type="github">
   <diagram id="5jZouDEvCZgjOH0xdtIj" name="ShoppingDB">
     <mxGraphModel dx="3555" dy="1643" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
       <root>
@@ -1603,7 +1603,7 @@
         <mxCell id="92wOmejcZKaFyFq-x9RZ-143" value="가격" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="3334" y="2300" width="60" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="92wOmejcZKaFyFq-x9RZ-144" value="상품사진" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="92wOmejcZKaFyFq-x9RZ-144" value="사진번호" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="3334" y="2340" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="92wOmejcZKaFyFq-x9RZ-145" value="상품분류" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -2199,6 +2199,36 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1900" y="2729.9999999999995" as="sourcePoint" />
             <mxPoint x="1780" y="2669.9999999999995" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6GFqDLH5qVLX8Q6M01xA-44" value="사진" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3470" y="2330" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6GFqDLH5qVLX8Q6M01xA-45" value="&lt;u&gt;사진번호&lt;/u&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3670" y="2300" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6GFqDLH5qVLX8Q6M01xA-46" value="사진이름" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3670" y="2340" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6GFqDLH5qVLX8Q6M01xA-47" value="사진경로" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3670" y="2380" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6GFqDLH5qVLX8Q6M01xA-48" value="" style="endArrow=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="6GFqDLH5qVLX8Q6M01xA-44" target="6GFqDLH5qVLX8Q6M01xA-46">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="3230" y="2420" as="sourcePoint" />
+            <mxPoint x="3280" y="2370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6GFqDLH5qVLX8Q6M01xA-49" value="" style="endArrow=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="6GFqDLH5qVLX8Q6M01xA-44" target="6GFqDLH5qVLX8Q6M01xA-47">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="3600" y="2370" as="sourcePoint" />
+            <mxPoint x="3680" y="2370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6GFqDLH5qVLX8Q6M01xA-50" value="" style="endArrow=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="6GFqDLH5qVLX8Q6M01xA-45" target="6GFqDLH5qVLX8Q6M01xA-44">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="3600" y="2370" as="sourcePoint" />
+            <mxPoint x="3680" y="2410" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
