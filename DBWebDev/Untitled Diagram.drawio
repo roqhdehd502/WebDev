@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-03-10T09:12:03.542Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="yzEq841p-hr1tEY5xf6h" version="14.4.6" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-10T09:16:25.331Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="8DZ2fTvMgZLRnRMMKw55" version="14.4.6" type="github">
   <diagram id="5jZouDEvCZgjOH0xdtIj" name="ShoppingDB">
-    <mxGraphModel dx="2370" dy="1213" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
+    <mxGraphModel dx="2844" dy="1456" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2116,6 +2116,15 @@
               <mxPoint x="2304" y="2680" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="6GFqDLH5qVLX8Q6M01xA-8" value="has" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="2450" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="6GFqDLH5qVLX8Q6M01xA-9" value="회원 작성 게시판" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="2600" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6GFqDLH5qVLX8Q6M01xA-10" value="관리자 작성 게시판" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="2600" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
