@@ -1,20 +1,20 @@
-<mxfile host="app.diagrams.net" modified="2021-03-13T08:38:26.099Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="LGWJUyCXRBeGoU-Q8KD0" version="14.4.7" type="github">
+<mxfile host="app.diagrams.net" modified="2021-03-13T08:42:20.677Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36" etag="grO3ddB5zzhczlUhDTK4" version="14.4.7" type="github">
   <diagram name="Page-1" id="97916047-d0de-89f5-080d-49f4d83e522f">
-    <mxGraphModel dx="2238" dy="1173" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1.5" pageWidth="5000" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="1902" dy="997" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1.5" pageWidth="5000" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="2" value="메인화면" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" parent="1" vertex="1">
-          <mxGeometry x="672" y="205.5" width="200" height="60" as="geometry" />
+          <mxGeometry x="672" y="260" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="3" value="로그인" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" parent="1" vertex="1">
-          <mxGeometry x="662" y="345.5" width="220" height="60" as="geometry" />
+          <mxGeometry x="662" y="360" width="220" height="60" as="geometry" />
         </mxCell>
         <mxCell id="4" value="상품리스트 대분류" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="302" y="455.5" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5" value="마이페이지" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" parent="1" vertex="1">
-          <mxGeometry x="960" y="960" width="200" height="60" as="geometry" />
+          <mxGeometry x="1140" y="820" width="200" height="60" as="geometry" />
         </mxCell>
         <mxCell id="6" value="장바구니" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" parent="1" vertex="1">
           <mxGeometry x="1300" y="480.5" width="200" height="60" as="geometry" />
@@ -164,6 +164,42 @@
           <mxGeometry x="102" y="205.5" width="100" height="100" as="geometry">
             <mxPoint x="750" y="625.5" as="sourcePoint" />
             <mxPoint x="630" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-79" value="회원정보수정" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="420" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-80" value="주문내역조회" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="660" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-81" value="내가쓴구매후기목록" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="900" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-82" value="내가쓴상품문의목록" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-83" value="내가쓴고객Q&amp;A목록" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-84" value="최근본상품" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1620" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-85" value="찜한상품" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-86" value="내가쓴구매후기상세" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="900" y="1020" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-87" value="내가쓴상품문의상세" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="1020" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-88" value="내가쓴고객Q&amp;A상세" style="rounded=1;fillColor=#10739E;strokeColor=none;shadow=1;gradientColor=none;fontStyle=1;fontColor=#FFFFFF;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="1020" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m-Q9osOpvp5VeoCcgAZO-89" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;strokeWidth=4;endArrow=block;endFill=1;fontStyle=1;strokeColor=#23445D;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="m-Q9osOpvp5VeoCcgAZO-82">
+          <mxGeometry x="1236" y="400" width="100" height="100" as="geometry">
+            <mxPoint x="1260" y="690" as="sourcePoint" />
+            <mxPoint x="1300" y="760" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
